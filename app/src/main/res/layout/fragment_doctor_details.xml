@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgColor"
+        tools:context=".presentation.ui.DoctorDetailsFragment">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_large"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <TextView
+                android:id="@+id/doctorNameTv"
+                style="@style/TextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dr. Smith" />
+
+            <TextView
+                android:id="@+id/doctorTypeTv"
+                style="@style/TextViewMediumMainBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="general physician" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/bgCardColor" />
+
+            <TextView
+                style="@style/TextViewMediumMainBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="Address" />
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/addressTv"
+            style="@style/TextViewMediumMainBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="Liverpool Station home to un dah"
+            app:layout_constraintEnd_toStartOf="@+id/showOnMapBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/showOnMapBtn"
+            style="@style/ButtonPrimaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_large"
+            android:background="@drawable/rounded_button_primary"
+            android:drawableLeft="@drawable/baseline_map_24"
+            android:drawablePadding="@dimen/margin_small"
+            android:gravity="center_vertical|center"
+            android:paddingHorizontal="@dimen/margin_small"
+            android:text="Show On Map"
+            app:layout_constraintBottom_toBottomOf="@+id/addressTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addressTv" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appointmentsBtn"
+            style="@style/ButtonPrimaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_large"
+            android:background="@drawable/rounded_button_primary"
+            android:text="Book an appointment"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

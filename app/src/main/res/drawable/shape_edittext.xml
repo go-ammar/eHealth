@@ -1,0 +1,15 @@
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid
+        android:color="@color/bgCardColor"/>
+
+    <corners
+        android:bottomRightRadius="@dimen/_6sdp"
+        android:bottomLeftRadius="@dimen/_6sdp"
+        android:topLeftRadius="@dimen/_6sdp"
+        android:topRightRadius="@dimen/_6sdp"/>
+    <stroke
+        android:color="@color/colorButtonOutline"
+        android:width="1dp"/>
+</shape>

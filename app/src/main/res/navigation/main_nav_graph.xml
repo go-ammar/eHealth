@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.project.projecte_health.presentation.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_doctorDetailsFragment"
+            app:destination="@id/doctorDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_doctorListingFragment"
+            app:destination="@id/doctorListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorDetailsFragment"
+        android:name="com.project.projecte_health.presentation.ui.DoctorDetailsFragment"
+        android:label="DoctorDetailsFragment"
+        tools:layout="@layout/fragment_doctor_details">
+        <action
+            android:id="@+id/action_doctorDetailsFragment_to_doctorsMapsFragment"
+            app:destination="@id/doctorsMapsFragment" />
+        <argument
+            android:name="docInfo"
+            app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorsMapsFragment"
+        android:name="com.project.projecte_health.presentation.ui.DoctorsMapsFragment"
+        android:label="DoctorsMapsFragment"
+        tools:layout="@layout/fragment_doctors_maps"
+        >
+        <argument
+            android:name="docInfo"
+            app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorListingFragment"
+        android:name="com.project.projecte_health.presentation.ui.DoctorListingFragment"
+        android:label="DoctorListingFragment"
+        tools:layout="@layout/fragment_doctor_listing"
+        >
+        <argument
+            android:name="speciality"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_doctorListingFragment_to_doctorDetailsFragment"
+            app:destination="@id/doctorDetailsFragment" />
+    </fragment>
+
+</navigation>

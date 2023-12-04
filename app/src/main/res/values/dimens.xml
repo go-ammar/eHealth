@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text Size -->
+    <dimen name="extra_large_text">@dimen/_25ssp</dimen>
+    <dimen name="xx_large_text">@dimen/_20sdp</dimen>
+    <dimen name="x_large_text">@dimen/_18sdp</dimen>
+    <dimen name="large_text">@dimen/_17ssp</dimen>
+    <dimen name="larges_text">@dimen/_16ssp</dimen>
+    <dimen name="medium_text">@dimen/_14ssp</dimen>
+    <dimen name="small_medium_text">@dimen/_13ssp</dimen>
+    <dimen name="regular_text">@dimen/_12ssp</dimen>
+    <dimen name="small_text">@dimen/_10ssp</dimen>
+    <dimen name="icon_text">@dimen/_8ssp</dimen>
+
+    <!-- Margins -->
+    <dimen name="standard_margin_start">@dimen/_20sdp</dimen>
+    <dimen name="standard_margin_end">@dimen/_20sdp</dimen>
+    <dimen name="standard_margin_top">@dimen/_20sdp</dimen>
+    <dimen name="standard_margin_Bottom">@dimen/_20sdp</dimen>
+    <dimen name="negative_standard_margin">@dimen/_minus20sdp</dimen>
+
+    <!-- Margins   -->
+    <dimen name="margin_extra_small">@dimen/_2sdp</dimen>
+    <dimen name="margin_small">@dimen/_4sdp</dimen>
+    <dimen name="margin_small_mid">@dimen/_6sdp</dimen>
+    <dimen name="margin_medium">@dimen/_8sdp</dimen>
+    <dimen name="margin_normal">@dimen/_12sdp</dimen>
+    <dimen name="margin_large">@dimen/_16sdp</dimen>
+    <dimen name="margin_extra_large">@dimen/_24sdp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+</resources>
