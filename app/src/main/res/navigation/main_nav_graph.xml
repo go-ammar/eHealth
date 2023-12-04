@@ -29,13 +29,15 @@
         <argument
             android:name="docInfo"
             app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
+        <action
+            android:id="@+id/action_doctorDetailsFragment_to_bookAppointmentFragment"
+            app:destination="@id/bookAppointmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorsMapsFragment"
         android:name="com.project.projecte_health.presentation.ui.DoctorsMapsFragment"
         android:label="DoctorsMapsFragment"
-        tools:layout="@layout/fragment_doctors_maps"
-        >
+        tools:layout="@layout/fragment_doctors_maps">
         <argument
             android:name="docInfo"
             app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
@@ -44,8 +46,7 @@
         android:id="@+id/doctorListingFragment"
         android:name="com.project.projecte_health.presentation.ui.DoctorListingFragment"
         android:label="DoctorListingFragment"
-        tools:layout="@layout/fragment_doctor_listing"
-        >
+        tools:layout="@layout/fragment_doctor_listing">
         <argument
             android:name="speciality"
             app:argType="string"
@@ -53,6 +54,15 @@
         <action
             android:id="@+id/action_doctorListingFragment_to_doctorDetailsFragment"
             app:destination="@id/doctorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookAppointmentFragment"
+        android:name="com.project.projecte_health.presentation.ui.BookAppointmentFragment"
+        android:label="BookAppointmentFragment"
+        tools:layout="@layout/fragment_appointments_listing">
+        <argument
+            android:name="docInfo"
+            app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
     </fragment>
 
 </navigation>

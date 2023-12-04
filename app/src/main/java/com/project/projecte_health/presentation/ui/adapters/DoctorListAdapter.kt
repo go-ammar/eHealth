@@ -51,7 +51,6 @@ class DoctorListAdapter(
                         onClickListener.invoke(item)
                     }
 
-                    cardView.setOnClickListener { onClickListener.invoke(item) }
                 }
         }
     }

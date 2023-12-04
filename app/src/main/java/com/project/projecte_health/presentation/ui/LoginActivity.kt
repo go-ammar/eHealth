@@ -22,19 +22,11 @@ class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-//    private lateinit var auth: FirebaseAuth
-//    private lateinit var database: FirebaseDatabase
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         actionViews()
-
-        // Initialize Firebase Auth
-//        auth = FirebaseAuth.getInstance()
-        // Initialize Firebase Realtime Database
-//        database = FirebaseDatabase.getInstance()
     }
 
     private fun actionViews() {

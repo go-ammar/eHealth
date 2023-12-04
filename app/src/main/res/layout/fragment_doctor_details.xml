@@ -18,7 +18,7 @@
             layout="@layout/top_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <!-- TODO: Update blank fragment layout -->
+
 
         <LinearLayout
             android:id="@+id/linear"

@@ -6,7 +6,9 @@ import android.os.Bundle
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DashboardActivity : BaseActivity() {
 
     private lateinit var binding : ActivityDashboardBinding

@@ -9,9 +9,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.project.projecte_health.R
+import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityPrescriptionsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class PrescriptionsActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class PrescriptionsActivity : BaseActivity() {
 
 
     private lateinit var binding: ActivityPrescriptionsBinding
@@ -23,7 +26,6 @@ class PrescriptionsActivity : AppCompatActivity() {
 
         setBottomNavigations()
     }
-
 
     private fun setBottomNavigations() {
 
@@ -40,9 +42,6 @@ class PrescriptionsActivity : AppCompatActivity() {
                 }
 
                 R.id.prescriptions_button -> {
-                    val intent = Intent(this, PrescriptionsActivity::class.java)
-                    startActivity(intent)
-                    finish()
                     true
                 }
 

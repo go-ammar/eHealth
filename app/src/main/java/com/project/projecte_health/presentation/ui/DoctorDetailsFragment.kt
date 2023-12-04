@@ -53,5 +53,14 @@ class DoctorDetailsFragment : Fragment() {
                 )
             findNavController().safeNavigate(action)
         }
+
+        binding.appointmentsBtn.setOnClickListener {
+            val action =
+                DoctorDetailsFragmentDirections.actionDoctorDetailsFragmentToBookAppointmentFragment(
+                    docInfo
+                )
+            findNavController().safeNavigate(action)
+        }
+
     }
 }

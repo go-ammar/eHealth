@@ -9,7 +9,6 @@ import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity() {
 
-
     @Inject
     lateinit var prefsManager: PrefsManager
 

@@ -2,4 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph" />
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/prescriptionListFragment">
+
+    <fragment
+        android:id="@+id/prescriptionListFragment"
+        android:name="com.project.projecte_health.presentation.ui.PrescriptionListFragment"
+        android:label="fragment_prescription_list"
+        tools:layout="@layout/fragment_prescription_list" >
+        <action
+            android:id="@+id/action_prescriptionListFragment_to_prescriptionDetailsFragment"
+            app:destination="@id/prescriptionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prescriptionDetailsFragment"
+        android:name="com.project.projecte_health.presentation.ui.PrescriptionDetailsFragment"
+        android:label="fragment_prescription_details"
+        tools:layout="@layout/fragment_prescription_details" >
+        <argument
+            android:name="prescription"
+            app:argType="com.project.projecte_health.data.local.medicines.PrescriptionModel" />
+    </fragment>
+</navigation>
