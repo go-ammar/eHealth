@@ -1,4 +1,4 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

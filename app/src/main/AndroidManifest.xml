@@ -10,6 +10,17 @@
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
 
+
+    <!-- Devices running Android 12L (API level 32) or lower  -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+
+    <!-- Devices running Android 13 (API level 33) or higher -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <!-- To handle the reselection within the app on Android 14 (API level 34) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+
     <application
         android:name=".presentation.BaseApplication"
         android:allowBackup="true"
@@ -20,21 +31,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting"
+        android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
         <activity
             android:name=".presentation.ui.doctors.DoctorsDashboardActivity"
             android:exported="false"
             android:theme="@style/Theme.ProjectEHealth" />
         <activity
-            android:name=".presentation.ui.PrescriptionsActivity"
+            android:name=".presentation.ui.patients.PrescriptionsActivity"
             android:exported="false"
             android:theme="@style/Theme.ProjectEHealth" />
         <activity
-            android:name=".presentation.ui.AppointmentsActivity"
+            android:name=".presentation.ui.patients.AppointmentsActivity"
             android:exported="false"
             android:theme="@style/Theme.ProjectEHealth" />
         <activity
-            android:name=".presentation.ui.AccountActivity"
+            android:name=".presentation.ui.patients.AccountActivity"
             android:exported="false"
             android:theme="@style/Theme.ProjectEHealth" />
 
@@ -43,20 +55,20 @@
             android:value="AIzaSyBuHi0CCVRclOuLJwOp-IqPt-deFqii4r0" />
 
         <activity
-            android:name=".presentation.ui.DashboardActivity"
+            android:name=".presentation.ui.patients.DashboardActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ProjectEHealth" />
         <activity
-            android:name=".presentation.ui.SignupActivity"
+            android:name=".presentation.ui.registration.SignupActivity"
             android:exported="false"
             android:theme="@style/Theme.ProjectEHealth" />
         <activity
-            android:name=".presentation.ui.LoginActivity"
+            android:name=".presentation.ui.registration.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.ProjectEHealth" />
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name=".presentation.ui.registration.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.ProjectEHealth">
             <intent-filter>

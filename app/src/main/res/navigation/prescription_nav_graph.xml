@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/prescriptionListFragment"
-        android:name="com.project.projecte_health.presentation.ui.PrescriptionListFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.PrescriptionListFragment"
         android:label="fragment_prescription_list"
         tools:layout="@layout/fragment_prescription_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/prescriptionDetailsFragment"
-        android:name="com.project.projecte_health.presentation.ui.PrescriptionDetailsFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.PrescriptionDetailsFragment"
         android:label="fragment_prescription_details"
         tools:layout="@layout/fragment_prescription_details" >
         <argument

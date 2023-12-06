@@ -1,17 +1,14 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.data.local.bookings.Appointment
 import com.project.projecte_health.databinding.FragmentBookAppointmentBinding
-import com.project.projecte_health.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

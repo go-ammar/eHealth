@@ -1,4 +1,4 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.registration
 
 import android.os.Bundle
 import android.util.Patterns
@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.project.projecte_health.R
-import com.project.projecte_health.databinding.FragmentPatientInfoBinding
 import com.project.projecte_health.databinding.FragmentPatientInfoSignupBinding
 import com.project.projecte_health.utils.Utils.safeNavigate
 

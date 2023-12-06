@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.project.projecte_health.presentation.ui.HomeFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/doctorDetailsFragment"
-        android:name="com.project.projecte_health.presentation.ui.DoctorDetailsFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.DoctorDetailsFragment"
         android:label="DoctorDetailsFragment"
         tools:layout="@layout/fragment_doctor_details">
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/doctorsMapsFragment"
-        android:name="com.project.projecte_health.presentation.ui.DoctorsMapsFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.DoctorsMapsFragment"
         android:label="DoctorsMapsFragment"
         tools:layout="@layout/fragment_doctors_maps">
         <argument
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/doctorListingFragment"
-        android:name="com.project.projecte_health.presentation.ui.DoctorListingFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.DoctorListingFragment"
         android:label="DoctorListingFragment"
         tools:layout="@layout/fragment_doctor_listing">
         <argument
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookAppointmentFragment"
-        android:name="com.project.projecte_health.presentation.ui.BookAppointmentFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.BookAppointmentFragment"
         android:label="BookAppointmentFragment"
         tools:layout="@layout/fragment_appointments_listing">
         <argument

@@ -1,11 +1,9 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DataSnapshot
@@ -42,8 +40,6 @@ class EditProfileFragment : BaseFragment() {
 
         lifecycleScope.launch {
             userId = (activity as AccountActivity).prefsManager.getUserId().toString()
-            val path = userId
-//            database.reference.child("users")
             val userRef = database.reference.child("users/$userId")
 
             userRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -93,32 +89,11 @@ class EditProfileFragment : BaseFragment() {
             database.reference.child("users").child(userId).updateChildren(userData) { databaseError, _ ->
                     if (databaseError == null) {
                         // Height updated successfully
-                        findNavController().popBackStack()
                     } else {
                         // Failed to update height
                     }
                 }
 
-//            userRef.child("height").setValue(
-//                binding.heightEt.text.toString()
-//            )
-//            userRef.child("bloodType").setValue(
-//                binding.bloodTypeEt.text.toString()
-//            )
-//            userRef.child("weight").setValue(
-//                binding.weightEt.text.toString()
-//            )
-//            userRef.child("allergies").setValue(
-//                binding.allergiesEt.text.toString()
-//            )
-//            { databaseError, _ ->
-//                if (databaseError == null) {
-//                    // Height updated successfully
-//                    findNavController().popBackStack()
-//                } else {
-//                    // Failed to update height
-//                }
-//            }
         }
 
 

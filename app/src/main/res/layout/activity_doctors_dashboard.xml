@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.DashboardActivity">
+        tools:context=".presentation.ui.patients.DashboardActivity">
 
 
         <!--    android:background="@color/greyNormal"-->
@@ -51,7 +51,7 @@
                     app:itemTextColor="@drawable/nav_item_color_state"
                     app:labelVisibilityMode="labeled"
                     android:background="@color/transparent"
-                    app:menu="@menu/bottom_navigation_menu" />
+                    app:menu="@menu/bottom_navigation_menu_doc" />
 
             </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -67,7 +67,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/main_nav_graph"
+            app:navGraph="@navigation/doctors_main_nav_graph"
             tools:ignore="FragmentTagUsage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

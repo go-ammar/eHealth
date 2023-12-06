@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/doctors_main_nav_graph"
+    app:startDestination="@id/doctorsHomeFragment">
+
+    <fragment
+        android:id="@+id/doctorsHomeFragment"
+        android:name="com.project.projecte_health.presentation.ui.doctors.DoctorsHomeFragment"
+        android:label="DoctorsHomeFragment"
+        tools:layout="@layout/fragment_doctors_home"
+        />
+
+</navigation>

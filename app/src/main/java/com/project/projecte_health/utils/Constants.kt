@@ -6,5 +6,6 @@ object Constants {
     const val AUTO_AUTH_PREFS: String = "AUTO_AUTH_PREFS"
 
     const val USER_ID_PREF = "USER_ID"
+    const val USER_NAME_PREF = "USER_NAME"
 
 }

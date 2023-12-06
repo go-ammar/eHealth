@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -17,101 +17,103 @@
         android:background="@color/bgColor"
         android:fillViewport="true"
         android:scrollbars="none"
-        tools:context=".presentation.ui.EditProfileFragment">
+        tools:context=".presentation.ui.patients.EditProfileFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <include
-                layout="@layout/top_bar"
                 android:id="@+id/topBar"
-                />
+                layout="@layout/top_bar" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_large"
-
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/topBar"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/TextViewMediumMainBody"
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:text="Height" />
 
-            <EditText
-                android:id="@+id/heightEt"
-                style="@style/EditTextMainBody"
-                android:layout_width="match_parent"
-                android:text="@{profileData.height}"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:hint="Enter your height in cm" />
+                android:orientation="vertical"
+                android:padding="@dimen/margin_large"
+                app:layout_constraintTop_toBottomOf="@id/topBar">
 
-            <TextView
-                style="@style/TextViewMediumMainBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:text="Blood Type" />
+                <TextView
+                    style="@style/TextViewMediumMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:text="Height" />
 
-            <EditText
-                android:id="@+id/bloodTypeEt"
-                style="@style/EditTextMainBody"
-                android:text="@{profileData.bloodType}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:hint="Enter your Blood Type" />
+                <EditText
+                    android:id="@+id/heightEt"
+                    style="@style/EditTextMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:hint="Enter your height in cm"
+                    android:maxLines="1"
+                    android:text="@{profileData.height}" />
 
-            <TextView
-                style="@style/TextViewMediumMainBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:text="Weight" />
+                <TextView
+                    style="@style/TextViewMediumMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:text="Blood Type" />
 
-            <EditText
-                android:id="@+id/weightEt"
-                style="@style/EditTextMainBody"
-                android:layout_width="match_parent"
-                android:text="@{profileData.weight}"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:hint="Enter your weight in kgs" />
+                <EditText
+                    android:id="@+id/bloodTypeEt"
+                    style="@style/EditTextMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:hint="Enter your Blood Type"
+                    android:maxLines="1"
+                    android:text="@{profileData.bloodType}" />
 
-            <TextView
-                style="@style/TextViewMediumMainBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:text="Allergies" />
+                <TextView
+                    style="@style/TextViewMediumMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:text="Weight" />
 
-            <EditText
-                android:id="@+id/allergiesEt"
-                style="@style/EditTextMainBody"
-                android:text="@{profileData.allergies}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:hint="Enter your Allergies" />
+                <EditText
+                    android:id="@+id/weightEt"
+                    style="@style/EditTextMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:hint="Enter your weight in kgs"
+                    android:maxLines="1"
+                    android:text="@{profileData.weight}" />
+
+                <TextView
+                    style="@style/TextViewMediumMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:text="Allergies" />
+
+                <EditText
+                    android:id="@+id/allergiesEt"
+                    style="@style/EditTextMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:hint="Enter your Allergies"
+                    android:maxLines="1"
+                    android:text="@{profileData.allergies}" />
 
 
-
-        </LinearLayout>
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/saveBtn"
                 style="@style/ButtonPrimaryText"
-                android:layout_margin="@dimen/margin_large"
-
                 android:layout_width="0dp"
+
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_large"
                 android:layout_marginTop="@dimen/standard_margin_end"
                 android:background="@drawable/rounded_button_primary"
                 android:padding="@dimen/margin_large"

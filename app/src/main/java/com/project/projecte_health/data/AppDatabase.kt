@@ -17,7 +17,7 @@ import timber.log.Timber
 
 @Database(
     entities = [DashboardModel::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 //@TypeConverters(value = [JsonConverter::class])

@@ -1,4 +1,4 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.project.projecte_health.R
-import com.project.projecte_health.databinding.FragmentHomeBinding
 import com.project.projecte_health.databinding.FragmentSignupBinding
 import com.project.projecte_health.utils.Utils.safeNavigate
 

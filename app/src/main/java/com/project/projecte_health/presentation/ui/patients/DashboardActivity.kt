@@ -1,7 +1,6 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseActivity

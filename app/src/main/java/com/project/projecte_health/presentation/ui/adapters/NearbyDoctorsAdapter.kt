@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseAdapter
 import com.project.projecte_health.data.local.users.model.UsersModel
@@ -14,7 +15,8 @@ import com.project.projecte_health.databinding.ItemDoctorCategoryBinding
 import com.project.projecte_health.databinding.ItemNearbyDoctorsBinding
 
 class NearbyDoctorsAdapter(
-    private val onClickListener: (model: UsersModel) -> Unit
+    private val context: Context,
+    private val onClickListener: (model: UsersModel) -> Unit,
 ) : BaseAdapter<UsersModel>(
     diffCallback = object : DiffUtil.ItemCallback<UsersModel>() {
 
@@ -47,12 +49,15 @@ class NearbyDoctorsAdapter(
                     }
                     binding.doctorDistance.text = item.distance.toString().substringBefore(".") + " meters away"
 
+                    if (item.imageUrl != "") {
+                        Glide.with(context)
+                            .load(item.imageUrl)
+                            .into(binding.doctorIv)
+                    }
 
                     binding.cardView.setOnClickListener {
                         onClickListener.invoke(item)
                     }
-
-                    doctorName.text = item.name
 
                     cardView.setOnClickListener { onClickListener.invoke(item) }
                 }

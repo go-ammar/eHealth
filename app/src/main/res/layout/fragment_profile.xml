@@ -22,8 +22,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/user_pic"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_84sdp"
+                android:layout_height="@dimen/_84sdp"
                 android:layout_marginTop="@dimen/standard_margin_start"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_name"
@@ -72,7 +72,7 @@
                 android:layout_marginTop="@dimen/margin_small"
                 app:layout_constraintBottom_toTopOf="@id/cv_height"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="Name"
+                android:text=""
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_profile_name" />
 

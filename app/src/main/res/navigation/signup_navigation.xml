@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/signupFragment"
         tools:layout="@layout/fragment_signup"
-        android:name="com.project.projecte_health.presentation.ui.SignupFragment"
+        android:name="com.project.projecte_health.presentation.ui.registration.SignupFragment"
         android:label="SignupFragment" >
         <action
             android:id="@+id/action_signupFragment_to_patientInfoSignupFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/patientInfoFragment"
-        android:name="com.project.projecte_health.presentation.ui.PatientInfoFragment"
+        android:name="com.project.projecte_health.presentation.ui.registration.PatientInfoFragment"
         android:label="fragment_patient_info"
         tools:layout="@layout/fragment_patient_info" >
         <argument
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/patientInfoSignupFragment"
-        android:name="com.project.projecte_health.presentation.ui.PatientInfoSignupFragment"
+        android:name="com.project.projecte_health.presentation.ui.registration.PatientInfoSignupFragment"
         android:label="PatientInfoSignupFragment"
         tools:layout="@layout/fragment_patient_info_signup">
         <action

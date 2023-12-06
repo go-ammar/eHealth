@@ -1,4 +1,4 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.os.Bundle
 import android.view.LayoutInflater

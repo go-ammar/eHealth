@@ -5,4 +5,6 @@ data class ProfileModel(
     val weight : String? = "",
     val allergies : String? = "",
     val bloodType : String? = "",
+    val imageUrl : String? ="",
+    val name : String?=""
 )

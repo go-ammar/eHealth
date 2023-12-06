@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/appointmentsListingFragment"
-        android:name="com.project.projecte_health.presentation.ui.AppointmentsListingFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.AppointmentsListingFragment"
         android:label="AppointmentsListingFragment"
         tools:layout="@layout/fragment_appointments_listing"
         />

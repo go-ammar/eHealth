@@ -5,6 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "dashboardTable")
 data class DashboardModel (
-    @PrimaryKey
-    val notifications : String
+    @PrimaryKey (autoGenerate = true)
+    val notifications : Int
 )

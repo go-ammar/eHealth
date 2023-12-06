@@ -1,4 +1,4 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -22,10 +23,12 @@ import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.data.local.dashboard.model.CategoryModel
 import com.project.projecte_health.data.local.users.model.UsersModel
 import com.project.projecte_health.databinding.FragmentHomeBinding
+import com.project.projecte_health.presentation.ui.registration.LoginActivity
 import com.project.projecte_health.presentation.ui.adapters.CategoryAdapter
 import com.project.projecte_health.presentation.ui.adapters.NearbyDoctorsAdapter
 import com.project.projecte_health.utils.Utils
 import com.project.projecte_health.utils.Utils.safeNavigate
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -49,8 +52,12 @@ class HomeFragment : Fragment() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         checkLocationPermission()
 
-        binding.heading.text =
-            "Welcome To HealthConnect,\n" + activity?.intent?.getStringExtra("name")
+        lifecycleScope.launch {
+            binding.heading.text =
+                "Welcome To HealthConnect,\n" + (activity as DashboardActivity).prefsManager.getUserName()
+                    .toString()
+
+        }
 
         return binding.root
     }
@@ -114,20 +121,39 @@ class HomeFragment : Fragment() {
                                                 }
 
                                                 if (lat?.isNotEmpty() == true && lng?.isNotEmpty() == true) {
-                                                    userList.add(
-                                                        UsersModel(
-                                                            name.toString(),
-                                                            userId,
-                                                            distance = distance,
-                                                            speciality = speciality.toString(),
-                                                            address = address.toString(),
-                                                            postCode = postCode.toString(),
-                                                            latLng = LatLng(
-                                                                lat.toDouble(),
-                                                                lng.toDouble()
+                                                    if (userSnapshot.child("imageUrl").exists()) {
+                                                        userList.add(
+                                                            UsersModel(
+                                                                name.toString(),
+                                                                userId,
+                                                                distance = distance,
+                                                                speciality = speciality.toString(),
+                                                                address = address.toString(),
+                                                                postCode = postCode.toString(),
+                                                                latLng = LatLng(
+                                                                    lat.toDouble(),
+                                                                    lng.toDouble()
+                                                                ),
+                                                                imageUrl = userSnapshot.child("imageUrl")
+                                                                    .getValue(String::class.java)
                                                             )
                                                         )
-                                                    )
+                                                    } else {
+                                                        userList.add(
+                                                            UsersModel(
+                                                                name.toString(),
+                                                                userId,
+                                                                distance = distance,
+                                                                speciality = speciality.toString(),
+                                                                address = address.toString(),
+                                                                postCode = postCode.toString(),
+                                                                latLng = LatLng(
+                                                                    lat.toDouble(),
+                                                                    lng.toDouble()
+                                                                )
+                                                            )
+                                                        )
+                                                    }
                                                 }
                                             }
 
@@ -242,7 +268,7 @@ class HomeFragment : Fragment() {
     private fun setNearbyDoctorsAdapter(userList: ArrayList<UsersModel>) {
 
 
-        doctorsAdapter = NearbyDoctorsAdapter {
+        doctorsAdapter = NearbyDoctorsAdapter(requireContext()) {
             val action = HomeFragmentDirections.actionHomeFragmentToDoctorDetailsFragment(it)
             findNavController().safeNavigate(action)
         }

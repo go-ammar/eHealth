@@ -1,31 +1,37 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseActivity
-import com.project.projecte_health.databinding.ActivityAppointmentsBinding
-import com.project.projecte_health.databinding.ActivityDashboardBinding
+import com.project.projecte_health.databinding.ActivityAccountBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class AppointmentsActivity : BaseActivity() {
+@AndroidEntryPoint
+class AccountActivity : BaseActivity() {
 
-    lateinit var binding : ActivityAppointmentsBinding
+    private lateinit var binding: ActivityAccountBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAppointmentsBinding.inflate(layoutInflater)
+
+        binding = ActivityAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setBottomNavigations()
 
+    }
 
+    override fun onPause() {
+        super.onPause()
+        Log.d("ACTIVITY ACCOUNT ", "onPause: ")
     }
 
     private fun setBottomNavigations() {
 
         binding.bottomNavigation.itemIconTintList = null
-        binding.bottomNavigation.selectedItemId = R.id.appointments_button
+        binding.bottomNavigation.selectedItemId = R.id.account_button
 
         binding.bottomNavigation.setOnItemSelectedListener {
 
@@ -35,20 +41,23 @@ class AppointmentsActivity : BaseActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.prescriptions_button ->{
+
+                R.id.prescriptions_button -> {
                     val intent = Intent(this, PrescriptionsActivity::class.java)
                     startActivity(intent)
                     finish()
                     true
                 }
-                R.id.appointments_button ->{
-                    true
-                }
-                R.id.account_button ->{
-                    val intent = Intent(this, AccountActivity::class.java)
+
+                R.id.appointments_button -> {
+                    val intent = Intent(this, AppointmentsActivity::class.java)
                     startActivity(intent)
                     finish()
-                    false
+                    true
+                }
+
+                R.id.account_button -> {
+                    true
                 }
 
 
@@ -59,9 +68,5 @@ class AppointmentsActivity : BaseActivity() {
                 }
             }
         }
-
     }
-
-
-
 }

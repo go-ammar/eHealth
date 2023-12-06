@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.project.projecte_health.presentation.ui.ProfileFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"
         >
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.project.projecte_health.presentation.ui.EditProfileFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.EditProfileFragment"
         android:label="EditProfileFragment"
         tools:layout="@layout/fragment_edit_profile"
         />

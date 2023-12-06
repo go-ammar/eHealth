@@ -1,7 +1,6 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.patients
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +10,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.project.projecte_health.R
-import com.project.projecte_health.data.local.users.model.DoctorDetailModel
+import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.data.local.users.model.UsersModel
 import com.project.projecte_health.databinding.FragmentDoctorListingBinding
-import com.project.projecte_health.databinding.FragmentEditProfileBinding
 import com.project.projecte_health.presentation.ui.adapters.DoctorListAdapter
-import com.project.projecte_health.utils.Utils
 import com.project.projecte_health.utils.Utils.safeNavigate
 
 
-class DoctorListingFragment : Fragment() {
+class DoctorListingFragment : BaseFragment() {
 
     lateinit var binding: FragmentDoctorListingBinding
     private val args: DoctorListingFragmentArgs by navArgs()
@@ -40,7 +36,7 @@ class DoctorListingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val databaseReference =
-            (activity as DashboardActivity).database.getReference("users")
+            database.getReference("users")
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

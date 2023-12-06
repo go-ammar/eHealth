@@ -12,7 +12,7 @@
         android:background="@color/bgColor"
         android:layout_height="match_parent"
         android:padding="@dimen/margin_large"
-        tools:context=".presentation.ui.SignupFragment">
+        tools:context=".presentation.ui.registration.SignupFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

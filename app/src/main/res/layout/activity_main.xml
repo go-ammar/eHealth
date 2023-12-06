@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:background="@color/bgColor"
         android:padding="@dimen/margin_extra_large"
-        tools:context=".presentation.ui.MainActivity">
+        tools:context=".presentation.ui.registration.MainActivity">
 
         <ImageView
             android:id="@+id/logoIv"

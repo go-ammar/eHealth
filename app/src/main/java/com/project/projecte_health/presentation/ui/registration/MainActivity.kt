@@ -1,13 +1,11 @@
-package com.project.projecte_health.presentation.ui
+package com.project.projecte_health.presentation.ui.registration
 
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.project.projecte_health.base.BaseActivity

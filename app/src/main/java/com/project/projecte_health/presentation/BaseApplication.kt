@@ -4,11 +4,17 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import androidx.lifecycle.LifecycleObserver
+import com.google.firebase.FirebaseApp
 import dagger.hilt.android.HiltAndroidApp
 
 
 @HiltAndroidApp
 class BaseApplication : Application(), Application.ActivityLifecycleCallbacks {
+
+    override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
+    }
 
     override fun onActivityCreated(p0: Activity, p1: Bundle?) {
 
