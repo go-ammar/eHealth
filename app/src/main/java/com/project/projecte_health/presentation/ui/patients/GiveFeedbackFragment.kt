@@ -44,7 +44,6 @@ class GiveFeedbackFragment : BaseFragment() {
         val userData = HashMap<String, Any>()
         userData["rating"] = binding.ratingBar.rating
         userData["feedback"] = binding.feedbackEt.text.toString()
-
         database.reference.child("feedback").child(doctorId).child(userId).setValue(userData)
 
     }
