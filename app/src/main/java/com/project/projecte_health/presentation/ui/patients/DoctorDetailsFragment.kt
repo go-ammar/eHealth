@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.databinding.FragmentDoctorDetailsBinding
 import com.project.projecte_health.utils.Utils.safeNavigate
 
 
-class DoctorDetailsFragment : Fragment() {
+class DoctorDetailsFragment : BaseFragment() {
 
     lateinit var binding: FragmentDoctorDetailsBinding
     private val args: DoctorDetailsFragmentArgs by navArgs()

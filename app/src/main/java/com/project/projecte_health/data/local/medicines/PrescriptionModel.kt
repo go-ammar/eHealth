@@ -9,5 +9,6 @@ data class PrescriptionModel(
     val details: String? = "",
     val dosage: String? = "",
     val doctorName: String? = "",
-    val doctorId: String? = ""
+    val doctorId: String? = "",
+    val patientId : String? = ""
 ) : Parcelable

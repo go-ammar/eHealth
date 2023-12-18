@@ -64,6 +64,7 @@
                         android:id="@+id/welcomeBacktv"
                         style="@style/TextViewMediumMainBody"
                         android:layout_width="0dp"
+                        android:paddingEnd="@dimen/margin_medium"
                         android:layout_height="wrap_content"
                         android:text="Want to see your appointments?"
                         app:layout_constraintEnd_toStartOf="@+id/findDoctorsBtn"

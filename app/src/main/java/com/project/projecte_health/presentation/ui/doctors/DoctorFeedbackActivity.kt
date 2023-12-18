@@ -21,6 +21,7 @@ class DoctorFeedbackActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDoctorFeedbackBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setBottomNavigations()
     }
 
     private fun setBottomNavigations() {
@@ -40,13 +41,13 @@ class DoctorFeedbackActivity : BaseActivity() {
                     true
                 }
                 R.id.appointments_button ->{
-                    val intent = Intent(this, AppointmentsActivity::class.java)
+                    val intent = Intent(this, DoctorAppointmentActivity::class.java)
                     startActivity(intent)
                     finish()
                     false
                 }
                 R.id.account_button ->{
-                    val intent = Intent(this, AccountActivity::class.java)
+                    val intent = Intent(this, DocAccountActivity::class.java)
                     startActivity(intent)
                     finish()
                     false

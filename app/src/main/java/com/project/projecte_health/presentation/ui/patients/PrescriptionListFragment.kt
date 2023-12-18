@@ -23,6 +23,7 @@ class PrescriptionListFragment : BaseFragment() {
 
     private lateinit var binding: FragmentPrescriptionListBinding
     private var userId : String = ""
+    val prescriptions = mutableListOf<PrescriptionModel>()
 
     private lateinit var upcomingAdapter: PrescriptionListAdapter
     override fun onCreateView(
@@ -47,7 +48,8 @@ class PrescriptionListFragment : BaseFragment() {
             details = "1 with water",
             dosage = "Morning and Night",
             doctorName = "Ammar Ahsan",
-            doctorId = "yBO5AHAKbIeycpXHC8tazNacScW2"
+            doctorId = "yBO5AHAKbIeycpXHC8tazNacScW2",
+            userId
         )
 
 //        savePrescription(userId, prescription)
@@ -56,11 +58,10 @@ class PrescriptionListFragment : BaseFragment() {
     }
 
     fun getPrescriptions(patientId: String) {
-        val prescriptionsRef = (activity as PrescriptionsActivity).database.reference.child("patients").child(patientId).child("prescriptions")
+        val prescriptionsRef = (activity as PrescriptionsActivity).database.reference.child(patientId).child("prescriptions")
 
         prescriptionsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val prescriptions = mutableListOf<PrescriptionModel>()
 
                 for (prescriptionSnapshot in snapshot.children) {
                     val prescription = prescriptionSnapshot.getValue(PrescriptionModel::class.java)
@@ -96,7 +97,7 @@ class PrescriptionListFragment : BaseFragment() {
     // Save prescription to Firebase
     fun savePrescription(patientId: String, prescription: PrescriptionModel) {
 
-        val prescriptionsRef = (activity as PrescriptionsActivity).database.reference.child("patients").child(patientId).child("prescriptions")
+        val prescriptionsRef = (activity as PrescriptionsActivity).database.reference.child(patientId).child("prescriptions")
         val prescriptionKey = prescriptionsRef.push().key
         prescriptionsRef.child(prescriptionKey!!).setValue(prescription)
     }

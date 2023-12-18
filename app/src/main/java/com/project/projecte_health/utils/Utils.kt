@@ -9,10 +9,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.data.local.bookings.Appointment
 import timber.log.Timber
-import java.lang.Math.atan2
-import java.lang.Math.cos
-import java.lang.Math.sin
-import java.lang.Math.sqrt
 
 object Utils {
 
@@ -68,7 +64,7 @@ object Utils {
                     val appointment = appointmentSnapshot.getValue(Appointment::class.java)
 
                     // Check if there is an appointment at the desired time
-                    if (appointment != null && appointment.appointmentTime == desiredTime) {
+                    if (appointment != null && appointment.startTime == desiredTime) {
                         isAvailable = false
                         break
                     }

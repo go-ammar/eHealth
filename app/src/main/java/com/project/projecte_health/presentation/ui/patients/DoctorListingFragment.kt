@@ -19,9 +19,9 @@ import com.project.projecte_health.utils.Utils.safeNavigate
 
 class DoctorListingFragment : BaseFragment() {
 
-    lateinit var binding: FragmentDoctorListingBinding
+    private lateinit var binding: FragmentDoctorListingBinding
     private val args: DoctorListingFragmentArgs by navArgs()
-    lateinit var adapter: DoctorListAdapter
+    private lateinit var adapter: DoctorListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

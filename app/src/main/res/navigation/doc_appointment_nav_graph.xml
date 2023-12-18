@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/doc_appointment_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/doc_appointment_nav_graph"
+    app:startDestination="@id/doctorAppointmentListFragment">
 
+    <fragment
+        android:id="@+id/doctorAppointmentListFragment"
+        android:name="com.project.projecte_health.presentation.ui.doctors.DoctorAppointmentListFragment"
+        android:label="DoctorAppointmentListFragment"
+        tools:layout="@layout/fragment_doctor_appointment_list">
+        <action
+            android:id="@+id/action_doctorAppointmentListFragment_to_doctorAppointmentDetailFragment"
+            app:destination="@id/doctorAppointmentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorAppointmentDetailFragment"
+        android:name="com.project.projecte_health.presentation.ui.doctors.DoctorAppointmentDetailFragment"
+        android:label="DoctorAppointmentDetailFragment"
+        tools:layout="@layout/fragment_doctor_appointment_detail">
+        <argument
+            android:name="appointmentdetail"
+            app:argType="com.project.projecte_health.data.local.bookings.Appointment" />
+    </fragment>
 </navigation>

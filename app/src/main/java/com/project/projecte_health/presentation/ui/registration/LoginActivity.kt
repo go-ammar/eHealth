@@ -3,17 +3,19 @@ package com.project.projecte_health.presentation.ui.registration
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityLoginBinding
 import com.project.projecte_health.presentation.ui.doctors.DoctorsDashboardActivity
 import com.project.projecte_health.presentation.ui.patients.DashboardActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-
 @AndroidEntryPoint
 class LoginActivity : BaseActivity() {
 
@@ -27,6 +29,22 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun actionViews() {
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+//                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            val msg = "Token is $token"
+            Log.d("TAG", msg)
+//            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+        })
+
 
         binding.loginBtn.setOnClickListener {
 
@@ -47,6 +65,7 @@ class LoginActivity : BaseActivity() {
                             lifecycleScope.launch {
                                 prefsManager.saveUserId(userId)
                             }
+                            FirebaseMessaging.getInstance().subscribeToTopic(userId)
 
                             userReference.addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(dataSnapshot: DataSnapshot) {

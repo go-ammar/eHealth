@@ -13,7 +13,7 @@
         android:background="@color/bgColor"
         android:fillViewport="true"
         android:scrollbars="none"
-        tools:context=".presentation.ui.patients.DoctorDetailsFragment">
+        tools:context=".presentation.ui.doctors.DoctorAppointmentDetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar">
 
                 <TextView
-                    android:id="@+id/doctorNameTv"
+                    android:id="@+id/patientNameTv"
                     style="@style/TextViewHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,39 +60,39 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:text="Address" />
+                    android:text="Details:" />
+
+                <TextView
+                    android:id="@+id/detailsTv"
+                    style="@style/TextViewMediumMainBody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="Liverpool Station home to un dah"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linear" />
+
+                <TextView
+                    style="@style/TextViewSubHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="Prescribed Medicines" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcomingRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/upcomingTv"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_prescription" />
 
 
             </LinearLayout>
 
-
-            <TextView
-                android:id="@+id/addressTv"
-                style="@style/TextViewMediumMainBody"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="Liverpool Station home to un dah"
-                app:layout_constraintEnd_toStartOf="@+id/showOnMapBtn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/showOnMapBtn"
-                style="@style/ButtonPrimaryText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_large"
-                android:background="@drawable/rounded_button_primary"
-                android:drawableLeft="@drawable/baseline_map_24"
-                android:drawablePadding="@dimen/margin_small"
-                android:gravity="center_vertical|center"
-                android:paddingHorizontal="@dimen/margin_small"
-                android:text="Show On Map"
-                app:layout_constraintBottom_toBottomOf="@+id/addressTv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/addressTv" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/appointmentsBtn"
@@ -102,8 +102,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_large"
                 android:background="@drawable/rounded_button_primary"
-                android:text="Book an appointment"
-
+                android:text="Prescribe Medicines"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

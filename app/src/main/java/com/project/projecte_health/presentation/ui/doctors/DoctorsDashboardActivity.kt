@@ -20,6 +20,7 @@ class DoctorsDashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDoctorsDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setBottomNavigations()
     }
 
 
@@ -34,21 +35,25 @@ class DoctorsDashboardActivity : BaseActivity() {
                 R.id.home_button -> {
                     true
                 }
-                R.id.feedback_button ->{
+
+                R.id.feedback_button -> {
                     val intent = Intent(this, DoctorFeedbackActivity::class.java)
                     startActivity(intent)
                     true
                 }
-                R.id.appointments_button ->{
-                    val intent = Intent(this, AppointmentsActivity::class.java)
+
+                R.id.appointments_button -> {
+                    val intent = Intent(this, DoctorAppointmentActivity::class.java)
                     startActivity(intent)
                     false
                 }
-                R.id.account_button ->{
-                    val intent = Intent(this, AccountActivity::class.java)
+
+                R.id.account_button -> {
+                    val intent = Intent(this, DocAccountActivity::class.java)
                     startActivity(intent)
                     false
                 }
+
                 else -> {
                     false
                 }

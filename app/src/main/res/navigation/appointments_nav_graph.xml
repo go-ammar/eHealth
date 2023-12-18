@@ -11,4 +11,6 @@
         android:label="AppointmentsListingFragment"
         tools:layout="@layout/fragment_appointments_listing"
         />
+
+
 </navigation>
