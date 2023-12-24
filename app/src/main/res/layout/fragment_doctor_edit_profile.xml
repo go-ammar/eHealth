@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="profileData"
+            type="com.project.projecte_health.data.local.users.model.ProfileModel" />
+
     </data>
 
     <ScrollView
@@ -14,89 +18,29 @@
         android:fillViewport="true"
         android:scrollbars="none">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".presentation.ui.registration.PatientInfoFragment">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/heading"
-                style="@style/TextViewHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:text="@string/sign_up"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <include
+                android:id="@+id/topBar"
+                layout="@layout/top_bar" />
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_large"
+
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading">
-
-                <EditText
-                    android:id="@+id/nameEt"
-                    style="@style/EditTextMainBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_medium"
-                    android:hint="@string/name"
-                    android:padding="@dimen/margin_normal" />
-
-                <EditText
-                    android:id="@+id/phoneNumberEt"
-                    style="@style/EditTextMainBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_medium"
-                    android:hint="@string/phone_number"
-                    android:padding="@dimen/margin_normal" />
-
-                <EditText
-                    android:id="@+id/addressEt"
-                    style="@style/EditTextMainBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_medium"
-                    android:hint="@string/address"
-                    android:padding="@dimen/margin_normal" />
-
-                <EditText
-                    android:id="@+id/postCodeEt"
-                    style="@style/EditTextMainBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_medium"
-                    android:hint="@string/post_code"
-                    android:padding="@dimen/margin_normal" />
+                android:padding="@dimen/margin_large"
+                app:layout_constraintTop_toBottomOf="@id/topBar">
 
                 <TextView
-                    android:id="@+id/specialityEt"
-                    style="@style/EditTextMainBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_edittext"
-                    android:hint="Speciality"
-                    android:padding="@dimen/margin_normal"
-                    android:visibility="gone"
-                    app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                <TextView
-                    android:id="@+id/daysTv"
                     style="@style/TextViewMediumMainBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/margin_small"
-                    android:text="Days"
-                    android:visibility="gone" />
+                    android:text="Days" />
 
                 <CheckBox
                     android:id="@+id/checkboxMonday"
@@ -106,8 +50,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Monday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <!-- Tuesday -->
                 <CheckBox
@@ -118,8 +61,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Tuesday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <!-- Wednesday -->
                 <CheckBox
@@ -130,8 +72,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Wednesday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <!-- Thursday -->
                 <CheckBox
@@ -142,8 +83,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Thursday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <!-- Friday -->
                 <CheckBox
@@ -154,8 +94,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Friday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <!-- Saturday -->
                 <CheckBox
@@ -166,8 +105,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Saturday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <!-- Sunday -->
                 <CheckBox
@@ -178,17 +116,14 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Sunday"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <TextView
-                    android:id="@+id/startTimeTv"
                     style="@style/TextViewMediumMainBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/margin_small"
-                    android:text="Start Time"
-                    android:visibility="gone" />
+                    android:text="Start Time" />
 
                 <TextView
                     android:id="@+id/startTimeEt"
@@ -197,8 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_medium"
                     android:hint="Start Time"
-                    android:maxLines="1"
-                    android:visibility="gone" />
+                    android:maxLines="1" />
 
                 <TextView
                     android:id="@+id/endTimedescTv"
@@ -206,37 +140,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/margin_small"
-                    android:text="End Time"
-                    android:visibility="gone" />
+                    android:text="End Time" />
 
                 <TextView
-                    android:id="@+id/endTimeTv"
+                    android:id="@+id/endTimeEt"
                     style="@style/EditTextMainBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_medium"
                     android:hint="End Time"
-                    android:maxLines="1"
-                    android:visibility="gone" />
+                    android:maxLines="1" />
 
 
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/loginBtn"
+                android:id="@+id/saveBtn"
                 style="@style/ButtonPrimaryText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_large"
+                android:layout_marginTop="@dimen/standard_margin_end"
                 android:background="@drawable/rounded_button_primary"
-                android:text="@string/next"
-
+                android:padding="@dimen/margin_large"
+                android:text="Save Profile"
+                android:textColor="@color/colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

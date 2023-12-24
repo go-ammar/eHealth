@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/doc_account_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/doc_account_nav_graph"
+    app:startDestination="@id/doctorProfileFragment">
 
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.project.projecte_health.presentation.ui.doctors.DoctorProfileFragment"
+        android:label="fragment_doctor_profile"
+        tools:layout="@layout/fragment_doctor_profile" >
+        <action
+            android:id="@+id/action_doctorProfileFragment_to_doctorEditProfileFragment"
+            app:destination="@id/doctorEditProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorEditProfileFragment"
+        android:name="com.project.projecte_health.presentation.ui.doctors.DoctorEditProfileFragment"
+        android:label="DoctorEditProfileFragment"
+        tools:layout="@layout/fragment_doctor_edit_profile"
+        />
 </navigation>

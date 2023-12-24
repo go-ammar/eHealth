@@ -1,20 +1,27 @@
 package com.project.projecte_health.presentation.ui.patients
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.data.local.bookings.Appointment
+import com.project.projecte_health.data.local.users.model.Availability
 import com.project.projecte_health.databinding.FragmentBookAppointmentBinding
+import com.project.projecte_health.presentation.ui.bottomsheets.BottomSheetSpeciality
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.util.ArrayList
 import java.util.Calendar
 import java.util.Locale
 
@@ -28,8 +35,8 @@ class BookAppointmentFragment : BaseFragment() {
     private var userName = ""
 
     private var selectedDate: Long = 0
-    private var selectedStartTime: String = ""
-    private var selectedEndTime: String = ""
+    private var daysList: MutableList<String> = ArrayList()
+    private var timeList: List<String> = ArrayList()
 
 
     override fun onCreateView(
@@ -51,16 +58,74 @@ class BookAppointmentFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            var lastSelectedCalendar = Calendar.getInstance()
+
+            val docUserId = args.docInfo.userId
+            val userRef = database.reference.child("users/$docUserId").child("availability")
+
+            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                @RequiresApi(Build.VERSION_CODES.O)
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        // Access the value from the DataSnapshot
+                        val profileData = snapshot.getValue(Availability::class.java)
+                        // Do something with the height
+                        if (profileData != null) {
+                            // Process the height value
+
+                            daysList = profileData.days.toMutableList()
+
+                            timeList = generateTimeIntervals(profileData.startTime.toString(), profileData.endTime.toString())
+
+
+                        }
+                    } else {
+                        // Data does not exist
+                        println("Data does not exist")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle potential errors
+                    println("Database error: ${error.message}")
+                }
+            })
+
+
+
             calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-                selectedDate = getTimestamp(year, month, dayOfMonth)
+                val checkCalendar = Calendar.getInstance().apply {
+                    set(year, month, dayOfMonth)
+                }
+
+                // Get the day of the week as a string (e.g., "Monday")
+                val selectedDayOfWeekString = SimpleDateFormat("EEEE", Locale.getDefault()).format(checkCalendar.time)
+
+                // Check if the selected day is in the valid days list
+                if (selectedDayOfWeekString !in daysList) {
+                    // If not in the list, switch back to the last selected date
+                    binding.calendarView.date = lastSelectedCalendar.timeInMillis
+                } else {
+                    // Update lastSelectedCalendar for valid days
+                    lastSelectedCalendar = checkCalendar
+                    selectedDate = getTimestamp(year, month, dayOfMonth)
+                }
             }
 
-            startTimePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
-                selectedStartTime = formatTime(hourOfDay, minute)
-            }
 
-            endTimePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
-                selectedEndTime = formatTime(hourOfDay, minute)
+            binding.timePicker.setOnClickListener {
+                val btmSheetDialogFragment = BottomSheetSpeciality(
+                    timeList
+                )
+                btmSheetDialogFragment.show(
+                    childFragmentManager,
+                    BottomSheetSpeciality.TAG
+                )
+
+                btmSheetDialogFragment.stringData.observe(viewLifecycleOwner) {
+                    binding.timePicker.text = it
+                }
+
             }
 
             confirmBtn.setOnClickListener {
@@ -69,14 +134,33 @@ class BookAppointmentFragment : BaseFragment() {
                     userId,
                     args.docInfo.userId,
                     selectedDate,
-                    selectedStartTime,
-                    selectedEndTime
+                    binding.timePicker.text.substring(0, 5),
+                    binding.timePicker.text.substring(binding.timePicker.text.length - 5)
                 )
 
             }
         }
 
 
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun generateTimeIntervals(startTime: String, endTime: String): List<String> {
+        val formatter = DateTimeFormatter.ofPattern("HH:mm")
+        val start = LocalTime.parse(startTime, formatter)
+        val end = LocalTime.parse(endTime, formatter)
+
+        val intervals = mutableListOf<String>()
+        var current = start
+
+        while (current.isBefore(end)) {
+            val next = current.plusMinutes(30.toLong())
+            intervals.add("${current.format(formatter)}-${next.format(formatter)}")
+            current = next
+        }
+
+        return intervals
     }
 
     private fun createAppointment(
@@ -118,8 +202,4 @@ class BookAppointmentFragment : BaseFragment() {
         return calendar.timeInMillis
     }
 
-    private fun formatTime(hourOfDay: Int, minute: Int): String {
-        return String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute)
-
-    }
 }

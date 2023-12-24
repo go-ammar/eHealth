@@ -41,7 +41,7 @@ class DoctorAppointmentActivity : BaseActivity() {
                     val intent = Intent(this, DoctorFeedbackActivity::class.java)
                     startActivity(intent)
                     finish()
-                    true
+                    false
                 }
                 R.id.appointments_button ->{
                     true

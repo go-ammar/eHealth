@@ -23,6 +23,9 @@ import com.project.projecte_health.presentation.ui.patients.PrescriptionListFrag
 import com.project.projecte_health.presentation.ui.patients.PrescriptionsActivity
 import com.project.projecte_health.utils.Utils.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class DoctorAppointmentDetailFragment : BaseFragment() {
@@ -49,7 +52,15 @@ class DoctorAppointmentDetailFragment : BaseFragment() {
         getPrescriptions()
         getPatientDetails()
 
-        binding.detailsTv.text = args.appointmentdetail.details
+        binding.apply {
+            binding.detailsTv.text = args.appointmentdetail.details
+            appointmentTimeTv.text = "Appointment Time: " + args.appointmentdetail.date?.let {
+                formatTimestamp(
+                    it
+                )
+            } + "\n" + args.appointmentdetail.startTime + "-" + args.appointmentdetail.endTime
+
+        }
 
     }
 
@@ -118,5 +129,12 @@ class DoctorAppointmentDetailFragment : BaseFragment() {
 
         upcomingAdapter.submitList(prescriptions)
 
+    }
+
+
+    fun formatTimestamp(timestamp: Long): String {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val date = Date(timestamp)
+        return dateFormat.format(date)
     }
 }

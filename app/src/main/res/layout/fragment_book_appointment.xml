@@ -48,25 +48,21 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TimePicker
-                android:id="@+id/startTimePicker"
-                android:layout_width="0dp"
+
+            <TextView
+                android:id="@+id/timePicker"
+                style="@style/EditTextMainBody"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_normal"
+                android:background="@drawable/shape_edittext"
+                android:hint="Select Time"
+                android:padding="@dimen/margin_normal"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-            <TimePicker
-                android:id="@+id/endTimePicker"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/startTimePicker" />
 
             <EditText
                 android:id="@+id/descriptionEt"
@@ -74,18 +70,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_large"
-                android:lines="5"
-                android:hint="Write down your details here"
-                android:gravity="start"
                 android:layout_marginTop="@dimen/margin_normal"
-                app:layout_constraintTop_toBottomOf="@id/endTimePicker" />
+                android:gravity="start"
+                android:hint="Write down your details here"
+                android:lines="5"
+                app:layout_constraintTop_toBottomOf="@id/timePicker" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/confirmBtn"
+                style="@style/ButtonPrimaryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_extra_large"
+                android:background="@drawable/rounded_button_primary"
+                android:text="Confirm Booking"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionEt" />

@@ -45,7 +45,7 @@ class ProfileFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         // Inflate the layout for this fragment
 
@@ -66,9 +66,10 @@ class ProfileFragment : BaseFragment() {
 
                             requireActivity().runOnUiThread {
                                 // Your UI update code here
-                                Glide.with(requireContext())
-                                    .load(profileData.imageUrl)
-                                    .into(binding.ivProfile)
+                                if (profileData.imageUrl?.isNotEmpty() == true)
+                                    Glide.with(requireContext())
+                                        .load(profileData.imageUrl)
+                                        .into(binding.ivProfile)
                             }
                         }
                     } else {
@@ -179,7 +180,7 @@ class ProfileFragment : BaseFragment() {
             val storageRef: StorageReference = storage.reference.child("images")
 
             // Create a reference to the specific image file (e.g., "image.jpg")
-            val imageRef: StorageReference = storageRef.child("image.jpg")
+            val imageRef: StorageReference = storageRef.child("$userId.jpg")
 
             // Get the image file as a byte array
             val imageByteArray: ByteArray? =
@@ -219,7 +220,7 @@ class ProfileFragment : BaseFragment() {
                     Log.e("TAG", "Error updating image URL: $error")
                 }
         } catch (e: Exception) {
-            Log.e("TAG", "saveImageToFirebase: ", )
+            Log.e("TAG", "saveImageToFirebase: ")
         }
     }
 

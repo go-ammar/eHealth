@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.databinding.FragmentDoctorAppointmentDetailBinding
 import com.project.projecte_health.databinding.FragmentDoctorsHomeBinding
 import com.project.projecte_health.presentation.ui.registration.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -25,7 +27,13 @@ class DoctorsHomeFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDoctorsHomeBinding.inflate(layoutInflater, container, false)
-        return  binding.root
+
+        lifecycleScope.launch {
+            binding.heading.text =
+                "Welcome To HealthConnect, " + (activity as DoctorsDashboardActivity).prefsManager.getUserName()
+                    .toString()
+        }
+        return binding.root
 
     }
 

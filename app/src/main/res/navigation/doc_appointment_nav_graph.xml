@@ -22,5 +22,16 @@
         <argument
             android:name="appointmentdetail"
             app:argType="com.project.projecte_health.data.local.bookings.Appointment" />
+        <action
+            android:id="@+id/action_doctorAppointmentDetailFragment_to_doctorGivePrescriptionFragment"
+            app:destination="@id/doctorGivePrescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorGivePrescriptionFragment"
+        android:name="com.project.projecte_health.presentation.ui.doctors.DoctorGivePrescriptionFragment"
+        android:label="DoctorGivePrescriptionFragment" >
+        <argument
+            android:name="patientId"
+            app:argType="string" />
     </fragment>
 </navigation>

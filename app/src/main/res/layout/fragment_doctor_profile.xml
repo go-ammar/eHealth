@@ -40,6 +40,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/baseline_person_24"
                     android:visibility="visible" />
+
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -71,20 +72,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text=""
-                app:layout_constraintBottom_toTopOf="@id/cv_height"
+                app:layout_constraintBottom_toTopOf="@id/cv_days"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_profile_name" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_height"
+                android:id="@+id/cv_days"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/standard_margin_start"
                 android:background="@color/bgCardColor"
                 android:backgroundTint="@color/bgCardColor"
                 android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@id/cv_bloodType"
+                app:layout_constraintBottom_toTopOf="@id/cv_startTime"
                 app:layout_constraintTop_toBottomOf="@id/tv_phone">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,12 +94,12 @@
                     android:padding="@dimen/margin_medium">
 
                     <TextView
-                        android:id="@+id/heightTv"
+                        android:id="@+id/daysTv"
                         style="@style/TextViewMediumMainBody"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_medium"
-                        android:text="Height: "
+                        android:text="Days: "
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -109,7 +110,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_bloodType"
+                android:id="@+id/cv_startTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_1sdp"
@@ -117,7 +118,7 @@
                 android:backgroundTint="@color/bgCardColor"
 
                 app:layout_constraintBottom_toTopOf="@id/cv_weight"
-                app:layout_constraintTop_toBottomOf="@id/cv_height">
+                app:layout_constraintTop_toBottomOf="@id/cv_days">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -130,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_medium"
-                        android:text="Blood Type:"
+                        android:text="Start Time:"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -146,8 +147,8 @@
                 android:layout_marginTop="@dimen/_1sdp"
                 android:background="@color/bgCardColor"
                 android:backgroundTint="@color/bgCardColor"
-                app:layout_constraintBottom_toTopOf="@id/cv_allergies"
-                app:layout_constraintTop_toBottomOf="@id/cv_bloodType">
+                app:layout_constraintBottom_toTopOf="@id/cv_desc"
+                app:layout_constraintTop_toBottomOf="@id/cv_startTime">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -155,12 +156,12 @@
                     android:padding="@dimen/margin_medium">
 
                     <TextView
-                        android:id="@+id/weightTv"
+                        android:id="@+id/endTimeTv"
                         style="@style/TextViewMediumMainBody"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_medium"
-                        android:text="Weight:"
+                        android:text="End Time:"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -171,7 +172,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_allergies"
+                android:id="@+id/cv_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_1sdp"
@@ -188,24 +189,26 @@
 
 
                     <TextView
-                        android:id="@+id/allergiesTv"
+                        android:id="@+id/descriptionTv"
                         style="@style/TextViewMediumMainBody"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_medium"
-                        android:text="Allergies:"
+                        android:text="Description:"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tv_trn"
+                        android:id="@+id/descriptionDetails"
                         style="@style/TextViewMainBody"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:text="Pollen, Dust"
+                        android:layout_marginHorizontal="@dimen/margin_medium"
+                        android:text="20 years of experience with patients "
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/allergiesTv" />
+                        app:layout_constraintTop_toBottomOf="@id/descriptionTv" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ class DoctorsDashboardActivity : BaseActivity() {
                 R.id.feedback_button -> {
                     val intent = Intent(this, DoctorFeedbackActivity::class.java)
                     startActivity(intent)
-                    true
+                    false
                 }
 
                 R.id.appointments_button -> {

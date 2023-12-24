@@ -20,12 +20,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.RemoteMessage
 import com.project.projecte_health.data.local.dashboard.model.CategoryModel
 import com.project.projecte_health.data.local.users.model.UsersModel
 import com.project.projecte_health.databinding.FragmentHomeBinding
-import com.project.projecte_health.presentation.ui.registration.LoginActivity
 import com.project.projecte_health.presentation.ui.adapters.CategoryAdapter
 import com.project.projecte_health.presentation.ui.adapters.NearbyDoctorsAdapter
+import com.project.projecte_health.presentation.ui.registration.LoginActivity
 import com.project.projecte_health.utils.Utils
 import com.project.projecte_health.utils.Utils.safeNavigate
 import kotlinx.coroutines.launch
@@ -49,10 +51,10 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        checkLocationPermission()
 
         lifecycleScope.launch {
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+            checkLocationPermission()
             binding.heading.text =
                 "Welcome To HealthConnect,\n" + (activity as DashboardActivity).prefsManager.getUserName()
                     .toString()
@@ -266,7 +268,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setNearbyDoctorsAdapter(userList: ArrayList<UsersModel>) {
-
 
         doctorsAdapter = NearbyDoctorsAdapter(requireContext()) {
             val action = HomeFragmentDirections.actionHomeFragmentToDoctorDetailsFragment(it)
