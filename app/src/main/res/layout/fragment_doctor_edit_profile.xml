@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="profileData"
-            type="com.project.projecte_health.data.local.users.model.ProfileModel" />
 
     </data>
 
@@ -150,6 +147,22 @@
                     android:layout_marginBottom="@dimen/margin_medium"
                     android:hint="End Time"
                     android:maxLines="1" />
+
+                <TextView
+                    style="@style/TextViewMediumMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_small"
+                    android:text="About You" />
+
+                <EditText
+                    android:id="@+id/aboutYouEt"
+                    style="@style/EditTextMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="Tell About Yourself"
+                    android:lines="3"/>
 
 
             </LinearLayout>

@@ -19,5 +19,9 @@
         android:name="com.project.projecte_health.presentation.ui.doctors.DoctorEditProfileFragment"
         android:label="DoctorEditProfileFragment"
         tools:layout="@layout/fragment_doctor_edit_profile"
-        />
+        >
+        <argument
+            android:name="docDetails"
+            app:argType="com.project.projecte_health.data.local.users.model.ProfileModel" />
+    </fragment>
 </navigation>

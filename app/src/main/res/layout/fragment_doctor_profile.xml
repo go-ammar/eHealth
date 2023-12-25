@@ -126,7 +126,7 @@
                     android:padding="@dimen/margin_medium">
 
                     <TextView
-                        android:id="@+id/bloodTypeTv"
+                        android:id="@+id/startTimeTv"
                         style="@style/TextViewMediumMainBody"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

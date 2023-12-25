@@ -180,7 +180,8 @@ class BookAppointmentFragment : BaseFragment() {
             date = date,
             startTime = startTime,
             endTime = endTime,
-            details = binding.descriptionEt.text.toString()
+            details = binding.descriptionEt.text.toString(),
+            feedbackGiven = false
         )
 
         // Push the appointment to the database

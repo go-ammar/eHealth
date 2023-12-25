@@ -36,6 +36,7 @@ class DoctorProfileFragment : BaseFragment() {
         daysList.add("Saturday")
         daysList.add("Sunday")
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,10 +61,31 @@ class DoctorProfileFragment : BaseFragment() {
 
                             requireActivity().runOnUiThread {
                                 // Your UI update code here
-                                if (profileData.imageUrl?.isNotEmpty() == true)
+                                if (profileData.imageUrl?.isNotEmpty() == true) {
                                     Glide.with(requireContext())
                                         .load(profileData.imageUrl)
                                         .into(binding.ivProfile)
+                                }
+
+                                val daysList: List<String>? = profileData.availability?.days// Your ArrayList of days
+
+                                val daysString = daysList?.joinToString(", ") // Join days with commas
+
+                                binding.daysTv.text = "Days: $daysString"
+
+                                binding.startTimeTv.text =
+                                    "Start time: " + profileData.availability?.startTime
+                                binding.endTimeTv.text =
+                                    "Start time: " + profileData.availability?.endTime
+                                binding.descriptionDetails.text = profileData.bio
+
+                            }
+
+
+                            binding.editBtn.setOnClickListener {
+                                val action =
+                                    DoctorProfileFragmentDirections.actionDoctorProfileFragmentToDoctorEditProfileFragment(profileData)
+                                findNavController().safeNavigate(action)
                             }
                         }
                     } else {
@@ -86,10 +108,6 @@ class DoctorProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.editBtn.setOnClickListener {
-            val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToDoctorEditProfileFragment()
-            findNavController().safeNavigate(action)
-        }
 
     }
 }

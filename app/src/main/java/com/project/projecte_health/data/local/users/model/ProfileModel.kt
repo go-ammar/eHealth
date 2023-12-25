@@ -13,5 +13,6 @@ data class ProfileModel(
     val imageUrl: String? = "",
     val name: String? = "",
     val description: String? = "",
-    val availability: Availability? = null
+    val availability: Availability? = null,
+    val bio : String ? = ""
 ) : Parcelable

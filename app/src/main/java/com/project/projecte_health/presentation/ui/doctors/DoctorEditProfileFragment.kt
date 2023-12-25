@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -24,6 +26,9 @@ class DoctorEditProfileFragment : BaseFragment() {
     private var daysList: MutableList<String> = ArrayList()
     private lateinit var binding: FragmentDoctorEditProfileBinding
     lateinit var userId: String
+
+    private val args: DoctorEditProfileFragmentArgs by navArgs()
+
 
     private val timeList = listOf(
         "09:00", "10:00", "11:00", "12:00",
@@ -53,34 +58,57 @@ class DoctorEditProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            userId = (activity as DocAccountActivity).prefsManager.getUserId().toString()
-            val userRef = database.reference.child("users/$userId")
 
-            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        // Access the value from the DataSnapshot
-                        val profileData = snapshot.getValue(ProfileModel::class.java)
-                        // Do something with the height
-                        if (profileData != null) {
-                            // Process the height value
-                            binding.profileData = profileData
-                            println("Height: $profileData")
-                        }
-                    } else {
-                        // Data does not exist
-                        println("Data does not exist")
+        binding.aboutYouEt.setText(args.docDetails.bio.toString())
+        binding.startTimeEt.text = args.docDetails.availability?.startTime
+        binding.endTimeEt.text = args.docDetails.availability?.endTime
+
+        if (args.docDetails.availability?.days?.isNotEmpty() == true)
+            for (item in args.docDetails.availability?.days!!) {
+
+                when (item) {
+                    "Monday" -> {
+                        binding.checkboxMonday.isChecked = true
+                    }
+
+                    "Tuesday" -> {
+                        binding.checkboxTuesday.isChecked = true
+                    }
+
+                    "Wednesday" -> {
+                        binding.checkboxWednesday.isChecked = true
+                    }
+
+                    "Thursday" -> {
+                        binding.checkboxThursday.isChecked = true
+                    }
+
+                    "Friday" -> {
+                        binding.checkboxFriday.isChecked = true
+                    }
+
+                    "Saturday" -> {
+                        binding.checkboxSaturday.isChecked = true
+                    }
+
+                    "Sunday" -> {
+                        binding.checkboxSunday.isChecked = true
                     }
                 }
+            }
 
-                override fun onCancelled(error: DatabaseError) {
-                    // Handle potential errors
-                    println("Database error: ${error.message}")
-                }
-            })
+
+        lifecycleScope.launch {
+            userId = (activity as DocAccountActivity).prefsManager.getUserId().toString()
 
         }
+
+
+        binding.topBar.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.topBar.headingTitle.text = "Edit Profile"
 
         binding.saveBtn.setOnClickListener {
 
@@ -103,6 +131,7 @@ class DoctorEditProfileFragment : BaseFragment() {
             )
 
             userData["availability"] = availability
+            userData["bio"] = binding.aboutYouEt.text.toString()
 
 
             database.reference.child("users").child(userId)

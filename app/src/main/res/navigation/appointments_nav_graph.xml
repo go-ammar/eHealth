@@ -10,7 +10,19 @@
         android:name="com.project.projecte_health.presentation.ui.patients.AppointmentsListingFragment"
         android:label="AppointmentsListingFragment"
         tools:layout="@layout/fragment_appointments_listing"
-        />
+        >
+        <action
+            android:id="@+id/action_appointmentsListingFragment_to_giveFeedbackFragment"
+            app:destination="@id/giveFeedbackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/giveFeedbackFragment"
+        android:name="com.project.projecte_health.presentation.ui.patients.GiveFeedbackFragment"
+        android:label="GiveFeedbackFragment" >
+        <argument
+            android:name="appointment"
+            app:argType="com.project.projecte_health.data.local.bookings.Appointment" />
+    </fragment>
 
 
 </navigation>

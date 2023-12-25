@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.base.BaseFragment
+import com.project.projecte_health.data.local.bookings.Appointment
 import com.project.projecte_health.databinding.FragmentGiveFeedbackBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -19,6 +23,9 @@ class GiveFeedbackFragment : BaseFragment() {
 
     private lateinit var binding: FragmentGiveFeedbackBinding
     private var userId = ""
+
+    private val args: GiveFeedbackFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,18 +44,67 @@ class GiveFeedbackFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.sendFeedbackBtn.setOnClickListener {
+            saveFeedback(args.appointment.doctorId.toString())
+        }
+
     }
 
     fun saveFeedback(doctorId: String) {
 
-        val userData = HashMap<String, Any>()
-        userData["rating"] = binding.ratingBar.rating
-        userData["feedback"] = binding.feedbackEt.text.toString()
-        database.reference.child("feedback").child(doctorId).child(userId).setValue(userData)
+        val feedbackData = HashMap<String, Any>()
+        feedbackData["rating"] = binding.ratingBar.rating
+        feedbackData["feedback"] = binding.feedbackEt.text.toString()
+        feedbackData["patientId"] = userId
+        database.reference.child("feedback").child(doctorId).push().setValue(feedbackData)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Successfully saved feedback
+
+
+                    val appointmentsQuery: Query = args.appointment.date?.toDouble()?.let {
+                        database.reference.child("appointments")
+//                            .orderByChild("patientId")
+//                            .equalTo(userId)
+//                            .orderByChild("doctorId").equalTo(args.appointment.doctorId)
+                            .orderByChild("date").equalTo(it)
+//                            .orderByChild("endTime")
+//                            .equalTo(args.appointment.endTime)
+                    }!!
+
+                    appointmentsQuery.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for (appointmentSnapshot in dataSnapshot.children) {
+                                val appointment =
+                                    appointmentSnapshot.getValue(Appointment::class.java)
+
+                                if (appointment != null && appointment.doctorId == doctorId && appointment.patientId == userId
+                                    && appointment.startTime == args.appointment.startTime && appointment.endTime == args.appointment.endTime ) {
+                                    // Found the matching appointment
+                                    appointmentSnapshot.ref.child("feedbackGiven").setValue(true)
+                                    break // Exit loop after updating the first matching record
+                                }
+                            }
+
+                            findNavController().popBackStack()
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            // Handle errors
+                        }
+                    })
+
+                } else {
+
+                }
+            }
+
+
+        //set feedback given == true
 
     }
 
-    fun getFeedback (){
+    fun getFeedback() {
         val doctorId = "yourDoctorId"
         val feedbackReference = database.reference.child("feedback").child(doctorId)
 
