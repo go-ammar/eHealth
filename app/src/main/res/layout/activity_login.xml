@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_large"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:text="Welcome back!"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 <TextView
                     android:id="@+id/detailsTv"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:text="Please enter your login details"

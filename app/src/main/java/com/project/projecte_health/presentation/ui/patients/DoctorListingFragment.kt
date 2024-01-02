@@ -106,9 +106,26 @@ class DoctorListingFragment : BaseFragment() {
                                                 // You can use it as needed, for example, display it or perform further actions
 //                                                println("Average Rating for $doctorIdToQuery: $averageRating")
                                             } else {
+                                                if (lat?.isNotEmpty() == true && lng?.isNotEmpty() == true) {
+                                                    userList.add(
+                                                        UsersModel(
+                                                            name = name.toString(),
+                                                            userId = userId,
+                                                            speciality = speciality.toString(),
+                                                            address = address.toString(),
+                                                            postCode = postCode.toString(),
+                                                            latLng = LatLng(
+                                                                lat.toDouble(),
+                                                                lng.toDouble()
+                                                            ),
+                                                            rating = 5.0
+                                                        )
+                                                    )
+                                                }
                                                 // Handle the case when there are no feedback entries
 //                                                println("No feedback available for $doctorIdToQuery")
                                             }
+                                            setAdapter(userList)
 
 
                                         }
@@ -161,9 +178,26 @@ class DoctorListingFragment : BaseFragment() {
                                                     // You can use it as needed, for example, display it or perform further actions
 //                                                println("Average Rating for $doctorIdToQuery: $averageRating")
                                                 } else {
+                                                    if (lat.isNotEmpty() && lng.isNotEmpty()) {
+                                                        userList.add(
+                                                            UsersModel(
+                                                                name = name.toString(),
+                                                                userId = userId,
+                                                                speciality = speciality.toString(),
+                                                                address = address.toString(),
+                                                                postCode = postCode.toString(),
+                                                                latLng = LatLng(
+                                                                    lat.toDouble(),
+                                                                    lng.toDouble()
+                                                                ),
+                                                                rating = 5.0
+                                                            )
+                                                        )
+                                                    }
                                                     // Handle the case when there are no feedback entries
 //                                                println("No feedback available for $doctorIdToQuery")
                                                 }
+                                                setAdapter(userList)
 
 
                                             }
@@ -180,7 +214,7 @@ class DoctorListingFragment : BaseFragment() {
 
                         }
 
-                        setAdapter(userList)
+//                        setAdapter(userList)
                     }
                 } else {
                     // The "users" node doesn't exist or is empty

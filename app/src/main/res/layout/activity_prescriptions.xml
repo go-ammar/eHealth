@@ -44,7 +44,6 @@
                     style="@style/Widget.MaterialComponents.BottomNavigationView"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="@color/transparent"
                     android:theme="@style/BottomNavigationView"
                     app:itemTextColor="@drawable/nav_item_color_state"
                     app:labelVisibilityMode="labeled"

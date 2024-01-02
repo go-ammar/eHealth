@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -44,10 +45,24 @@ class GiveFeedbackFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.feedbackEt.addTextChangedListener {
+            setBtn()
+        }
+
         binding.sendFeedbackBtn.setOnClickListener {
             saveFeedback(args.appointment.doctorId.toString())
         }
 
+    }
+
+    private fun setBtn() {
+        if (binding.feedbackEt.text.toString().isNotEmpty() && binding.ratingBar.rating>0){
+            binding.sendFeedbackBtn.alpha = 1f
+            binding.sendFeedbackBtn.isEnabled = true
+        } else {
+            binding.sendFeedbackBtn.alpha = 0.4f
+            binding.sendFeedbackBtn.isEnabled = false
+        }
     }
 
     fun saveFeedback(doctorId: String) {
@@ -79,7 +94,8 @@ class GiveFeedbackFragment : BaseFragment() {
                                     appointmentSnapshot.getValue(Appointment::class.java)
 
                                 if (appointment != null && appointment.doctorId == doctorId && appointment.patientId == userId
-                                    && appointment.startTime == args.appointment.startTime && appointment.endTime == args.appointment.endTime ) {
+                                    && appointment.startTime == args.appointment.startTime && appointment.endTime == args.appointment.endTime
+                                ) {
                                     // Found the matching appointment
                                     appointmentSnapshot.ref.child("feedbackGiven").setValue(true)
                                     break // Exit loop after updating the first matching record

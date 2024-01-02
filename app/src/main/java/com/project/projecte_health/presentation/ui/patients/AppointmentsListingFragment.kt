@@ -122,57 +122,109 @@ class AppointmentsListingFragment : BaseFragment() {
                 for (appointmentSnapshot in snapshot.children) {
                     val appointment = appointmentSnapshot.getValue(Appointment::class.java)
                     appointment?.let {
+                        val yourDateInLong: Long? = it.date/* Your date in long format */
+
+// Create a Date object from the stored long value
+                        var storedDate : Date = Date()
+                        if (yourDateInLong != null) {
+                            storedDate = Date(yourDateInLong)
+                        }
+
+// Get the current date
+                        val currentDate = Date()
+
+
+                        val dateFormat = SimpleDateFormat("yyyyMMdd")
+
+
+                        if (dateFormat.format(storedDate) == dateFormat.format(currentDate)) {
+                            val currentLocalTime: LocalTime = LocalTime.now()
+                            val formatter: DateTimeFormatter =
+                                DateTimeFormatter.ofPattern("kk:mm")
+                            val formattedTime: String = currentLocalTime.format(formatter)
+
+                            val parsedTime1: LocalTime =
+                                LocalTime.parse(formattedTime, formatter)
+                            val parsedTime2: LocalTime =
+                                LocalTime.parse(it.endTime, formatter)
+
+                            val resultTime: Int = parsedTime1.compareTo(parsedTime2)
+
+                            when {
+                                resultTime < 0 -> {
+                                    //show here
+                                    appointments.add(it)
+                                }
+
+                                resultTime > 0 -> {
+                                    //allow feedback
+                                    appointmentsPast.add(it)
+                                }
+
+                                else -> {
+                                    //show here
+                                    appointments.add(it)
+                                }
+                            }
+                        } else if (storedDate.after(currentDate)) {
+                            appointments.add(it)
+                            println("Appointment pending")
+                        } else {
+                            appointmentsPast.add(it)
+
+                            println("Give feedback for the appointment")
+                        }
 
                         val result =
                             it.date?.let { it1 -> formatTimestamp(it1).compareTo(currentDateInFormat) }
 
-                        if (result != null) {
-                            when {
-                                result < 0 -> {
-                                    //if current date is after appointment date (allow feedback only)
-                                    appointmentsPast.add(it)
-                                }
-
-                                result > 0 -> {
-                                    //if current date is before appointment date
-                                    appointments.add(it)
-
-                                }
-
-                                else -> {
-                                    //check time here
-                                    val currentLocalTime: LocalTime = LocalTime.now()
-                                    val formatter: DateTimeFormatter =
-                                        DateTimeFormatter.ofPattern("kk:mm")
-                                    val formattedTime: String = currentLocalTime.format(formatter)
-
-                                    val parsedTime1: LocalTime =
-                                        LocalTime.parse(formattedTime, formatter)
-                                    val parsedTime2: LocalTime =
-                                        LocalTime.parse(it.endTime, formatter)
-
-                                    val resultTime: Int = parsedTime1.compareTo(parsedTime2)
-
-                                    when {
-                                        resultTime < 0 -> {
-                                            //show here
-                                            appointments.add(it)
-                                        }
-
-                                        resultTime > 0 -> {
-                                            //allow feedback
-                                            appointmentsPast.add(it)
-                                        }
-
-                                        else -> {
-                                            //show here
-                                            appointments.add(it)
-                                        }
-                                    }
-
-                                }
-                            }
-                        }
+//                        if (result != null) {
+//                            when {
+//                                result < 0 -> {
+//                                    //if current date is after appointment date (allow feedback only)
+//                                    appointmentsPast.add(it)
+//                                }
+//
+//                                result > 0 -> {
+//                                    //if current date is before appointment date
+//                                    appointments.add(it)
+//
+//                                }
+//
+//                                else -> {
+//                                    //check time here
+//                                    val currentLocalTime: LocalTime = LocalTime.now()
+//                                    val formatter: DateTimeFormatter =
+//                                        DateTimeFormatter.ofPattern("kk:mm")
+//                                    val formattedTime: String = currentLocalTime.format(formatter)
+//
+//                                    val parsedTime1: LocalTime =
+//                                        LocalTime.parse(formattedTime, formatter)
+//                                    val parsedTime2: LocalTime =
+//                                        LocalTime.parse(it.endTime, formatter)
+//
+//                                    val resultTime: Int = parsedTime1.compareTo(parsedTime2)
+//
+//                                    when {
+//                                        resultTime < 0 -> {
+//                                            //show here
+//                                            appointments.add(it)
+//                                        }
+//
+//                                        resultTime > 0 -> {
+//                                            //allow feedback
+//                                            appointmentsPast.add(it)
+//                                        }
+//
+//                                        else -> {
+//                                            //show here
+//                                            appointments.add(it)
+//                                        }
+//                                    }
+//
+//                                }
+//                            }
+//                        }
 
                     }
                 }

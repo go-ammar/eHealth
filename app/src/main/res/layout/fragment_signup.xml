@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:textColor="@color/white"
+                android:textColor="@color/textColor"
                 android:checked="true"
                 android:drawableStart="@drawable/checkbox_selector"
                 android:drawablePadding="@dimen/margin_medium"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:textColor="@color/white"
+                android:textColor="@color/textColor"
                 android:drawableStart="@drawable/checkbox_selector"
                 android:drawablePadding="@dimen/margin_medium"
                 android:text="Doctor" />

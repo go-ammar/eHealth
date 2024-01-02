@@ -47,7 +47,6 @@
                     android:layout_height="?attr/actionBarSize"
                     app:itemTextColor="@drawable/nav_item_color_state"
                     app:labelVisibilityMode="labeled"
-                    android:background="@color/transparent"
                     app:menu="@menu/bottom_navigation_menu_doc" />
 
             </com.google.android.material.bottomappbar.BottomAppBar>

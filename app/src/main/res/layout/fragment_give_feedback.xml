@@ -117,6 +117,7 @@
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginBottom="@dimen/standard_margin_start"
             android:alpha="0.4"
+            android:enabled="false"
             android:background="@drawable/rounded_button_primary"
             android:paddingVertical="@dimen/margin_normal"
             android:text="Send Feedback"
