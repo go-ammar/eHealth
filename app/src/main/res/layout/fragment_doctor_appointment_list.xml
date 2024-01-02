@@ -23,6 +23,16 @@
                 android:id="@+id/heading"
                 layout="@layout/top_bar" />
 
+            <TextView
+                android:id="@+id/upcomingTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewHeading"
+                android:text="Upcoming Appointments"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heading"
+                android:layout_margin="@dimen/margin_large"
+                />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/appointmentsRv"
                 android:layout_width="match_parent"
@@ -30,8 +40,32 @@
                 android:layout_marginHorizontal="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/heading"
-                tools:listitem="@layout/item_doctor_list" />
+                app:layout_constraintTop_toBottomOf="@id/upcomingTv"
+                tools:listitem="@layout/item_doctor_list"
+                tools:itemCount="2"/>
+
+            <TextView
+                android:id="@+id/pastTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewHeading"
+                android:text="Previous Appointments"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appointmentsRv"
+                android:layout_margin="@dimen/margin_large"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pastAppointmentsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/pastTv"
+                tools:listitem="@layout/item_doctor_list"
+                tools:itemCount="2"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

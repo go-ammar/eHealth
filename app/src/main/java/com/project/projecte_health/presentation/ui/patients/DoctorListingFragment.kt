@@ -68,37 +68,112 @@ class DoctorListingFragment : BaseFragment() {
 
                                 if (args.speciality.toString() == "") {
 
-                                    if (lat?.isNotEmpty() == true && lng?.isNotEmpty() == true) {
-                                        userList.add(
-                                            UsersModel(
-                                                name = name.toString(),
-                                                userId = userId,
-                                                speciality = speciality.toString(),
-                                                address = address.toString(),
-                                                postCode = postCode.toString(),
-                                                latLng = LatLng(
-                                                    lat.toDouble(),
-                                                    lng.toDouble()
-                                                )
-                                            )
-                                        )
-                                    }
+                                    database.getReference("feedback").child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
+                                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                            var totalRating = 0.0
+                                            var feedbackCount = 0
+
+                                            // Iterate through feedback entries for the specified doctor
+                                            for (feedbackSnapshot in dataSnapshot.children) {
+                                                val rating = feedbackSnapshot.child("rating").getValue(Int::class.java)
+
+                                                // Check if the "rating" field exists and is a valid number
+                                                if (rating != null) {
+                                                    totalRating += rating
+                                                    feedbackCount++
+                                                }
+                                            }
+
+                                            if (feedbackCount > 0) {
+                                                if (lat?.isNotEmpty() == true && lng?.isNotEmpty() == true) {
+                                                    val averageRating = totalRating / feedbackCount
+                                                    userList.add(
+                                                        UsersModel(
+                                                            name = name.toString(),
+                                                            userId = userId,
+                                                            speciality = speciality.toString(),
+                                                            address = address.toString(),
+                                                            postCode = postCode.toString(),
+                                                            latLng = LatLng(
+                                                                lat.toDouble(),
+                                                                lng.toDouble()
+                                                            ),
+                                                            rating = averageRating
+                                                        )
+                                                    )
+                                                }
+                                                // Now, you have the averageRating for the specified doctor
+                                                // You can use it as needed, for example, display it or perform further actions
+//                                                println("Average Rating for $doctorIdToQuery: $averageRating")
+                                            } else {
+                                                // Handle the case when there are no feedback entries
+//                                                println("No feedback available for $doctorIdToQuery")
+                                            }
+
+
+                                        }
+
+                                        override fun onCancelled(databaseError: DatabaseError) {
+                                            // Handle errors
+                                            println("Error fetching feedback: $databaseError")
+                                        }
+                                    })
+
+
                                 } else if (args.speciality.toString() == speciality) {
                                     if (lat?.isNotEmpty() == true && lng?.isNotEmpty() == true) {
-                                        userList.add(
+                                        database.getReference("feedback").child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
+                                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                                var totalRating = 0.0
+                                                var feedbackCount = 0
 
-                                            UsersModel(
-                                                name = name.toString(),
-                                                userId = userId,
-                                                speciality = speciality.toString(),
-                                                address = address.toString(),
-                                                postCode = postCode.toString(),
-                                                latLng = LatLng(
-                                                    lat.toDouble(),
-                                                    lng.toDouble()
-                                                )
-                                            )
-                                        )
+                                                // Iterate through feedback entries for the specified doctor
+                                                for (feedbackSnapshot in dataSnapshot.children) {
+                                                    val rating = feedbackSnapshot.child("rating").getValue(Int::class.java)
+
+                                                    // Check if the "rating" field exists and is a valid number
+                                                    if (rating != null) {
+                                                        totalRating += rating
+                                                        feedbackCount++
+                                                    }
+                                                }
+
+                                                if (feedbackCount > 0) {
+                                                    if (lat.isNotEmpty() && lng.isNotEmpty()) {
+                                                        val averageRating = totalRating / feedbackCount
+                                                        userList.add(
+
+                                                            UsersModel(
+                                                                name = name.toString(),
+                                                                userId = userId,
+                                                                speciality = speciality.toString(),
+                                                                address = address.toString(),
+                                                                postCode = postCode.toString(),
+                                                                latLng = LatLng(
+                                                                    lat.toDouble(),
+                                                                    lng.toDouble()
+                                                                ),
+                                                                rating = averageRating
+                                                            )
+                                                        )
+                                                    }
+                                                    // Now, you have the averageRating for the specified doctor
+                                                    // You can use it as needed, for example, display it or perform further actions
+//                                                println("Average Rating for $doctorIdToQuery: $averageRating")
+                                                } else {
+                                                    // Handle the case when there are no feedback entries
+//                                                println("No feedback available for $doctorIdToQuery")
+                                                }
+
+
+                                            }
+
+                                            override fun onCancelled(databaseError: DatabaseError) {
+                                                // Handle errors
+                                                println("Error fetching feedback: $databaseError")
+                                            }
+                                        })
+
                                     }
                                 }
                             }
