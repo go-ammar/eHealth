@@ -28,6 +28,7 @@ import com.project.projecte_health.databinding.FragmentHomeBinding
 import com.project.projecte_health.presentation.ui.adapters.CategoryAdapter
 import com.project.projecte_health.presentation.ui.adapters.NearbyDoctorsAdapter
 import com.project.projecte_health.presentation.ui.registration.LoginActivity
+import com.project.projecte_health.presentation.ui.registration.MainActivity
 import com.project.projecte_health.utils.Utils
 import com.project.projecte_health.utils.Utils.safeNavigate
 import kotlinx.coroutines.launch
@@ -111,6 +112,8 @@ class HomeFragment : Fragment() {
                                             println("User ID: $userId, UserType: $userType")
 
                                             if (userType.toString() == "Doctor") {
+                                                val bio = userSnapshot.child("bio")
+                                                    .getValue(String::class.java)
                                                 val distance = lat?.toDouble()?.let {
                                                     lng?.toDouble()?.let { it1 ->
                                                         Utils.distanceBetween(
@@ -137,7 +140,8 @@ class HomeFragment : Fragment() {
                                                                     lng.toDouble()
                                                                 ),
                                                                 imageUrl = userSnapshot.child("imageUrl")
-                                                                    .getValue(String::class.java)
+                                                                    .getValue(String::class.java),
+                                                                bio = bio
                                                             )
                                                         )
                                                     } else {
@@ -152,7 +156,8 @@ class HomeFragment : Fragment() {
                                                                 latLng = LatLng(
                                                                     lat.toDouble(),
                                                                     lng.toDouble()
-                                                                )
+                                                                ),
+                                                                bio = bio
                                                             )
                                                         )
                                                     }

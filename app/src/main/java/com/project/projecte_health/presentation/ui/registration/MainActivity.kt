@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityMainBinding
+import com.project.projecte_health.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -30,6 +31,11 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         actionViews()
+    }
+
+    override fun displayProgressBar(loading: Boolean) {
+//        binding.loader.root.visibility = Utils.displayCustomLoaderView(this, loading)
+
     }
 
     private fun actionViews() {

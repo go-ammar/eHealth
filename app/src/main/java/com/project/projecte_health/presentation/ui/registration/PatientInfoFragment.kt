@@ -13,6 +13,7 @@ import android.widget.CheckBox
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -139,6 +140,8 @@ class PatientInfoFragment : BaseFragment() {
                         Log.d("SignUpActivity", "createUserWithEmail:success")
                         val user = auth.currentUser
 
+
+
                         // Store additional details in Firebase Realtime Database
                         user?.let {
                             val userId = it.uid
@@ -156,6 +159,7 @@ class PatientInfoFragment : BaseFragment() {
                                 userData["lat"] = latitude.toString()
                                 userData["lng"] = longitude.toString()
                                 userData["speciality"] = binding.specialityEt.text.toString()
+                                userData["bio"] = binding.aboutYouEt.text.toString()
 
                                 val daysCheckboxes = listOf(
                                     binding.checkboxMonday,
@@ -177,11 +181,17 @@ class PatientInfoFragment : BaseFragment() {
                             }
 
                             userReference.setValue(userData)
+
+                            user.sendEmailVerification().addOnCompleteListener {
+                                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                                intent.putExtra("emailVerification", true)
+                                startActivity(intent)
+                                activity?.finish()
+                            }
                         }
 
-                        val intent = Intent(requireActivity(), LoginActivity::class.java)
-                        startActivity(intent)
-                        activity?.finish()
+
+
                         // You can navigate to another activity or perform other actions here
                     } else {
                         // Registration failed
@@ -204,6 +214,7 @@ class PatientInfoFragment : BaseFragment() {
 
             btmSheetDialogFragment.stringData.observe(viewLifecycleOwner) {
                 binding.specialityEt.text = it
+                enableBtn()
             }
         }
 
@@ -221,6 +232,7 @@ class PatientInfoFragment : BaseFragment() {
                 binding.startTimeEt.text = it
                 binding.endTimeTv.visibility = View.VISIBLE
                 binding.endTimedescTv.visibility = View.VISIBLE
+                enableBtn()
             }
         }
 
@@ -239,6 +251,7 @@ class PatientInfoFragment : BaseFragment() {
                         .toInt()
                 ) {
                     binding.endTimeTv.text = it
+                    enableBtn()
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -250,6 +263,58 @@ class PatientInfoFragment : BaseFragment() {
             }
         }
 
+        binding.phoneNumberEt.addTextChangedListener {
+            enableBtn()
+        }
+
+        binding.addressEt.addTextChangedListener {
+            enableBtn()
+        }
+
+        binding.nameEt.addTextChangedListener {
+            enableBtn()
+        }
+
+        binding.postCodeEt.addTextChangedListener {
+            enableBtn()
+        }
+
+        binding.aboutYouEt.addTextChangedListener {
+            enableBtn()
+        }
+
+    }
+
+    private fun enableBtn() {
+        if (args.userType == "Doctor") {
+            if (binding.nameEt.text.toString().isNotEmpty()
+                && binding.phoneNumberEt.text.toString().isNotEmpty()
+                && binding.addressEt.text.toString().isNotEmpty()
+                && binding.postCodeEt.text.toString().isNotEmpty()
+                && binding.specialityEt.text.toString().isNotEmpty()
+                && binding.aboutYouEt.text.toString().isNotEmpty()
+                && binding.startTimeEt.text.toString().isNotEmpty()
+                && binding.endTimeTv.text.toString().isNotEmpty()
+            ) {
+                binding.loginBtn.isEnabled = true
+                binding.loginBtn.alpha = 1f
+            } else {
+                binding.loginBtn.isEnabled = false
+                binding.loginBtn.alpha = 0.7f
+            }
+        } else {
+            if (binding.nameEt.text.toString().isNotEmpty()
+                && binding.phoneNumberEt.text.toString().isNotEmpty()
+                && binding.addressEt.text.toString().isNotEmpty()
+                && binding.postCodeEt.text.toString().isNotEmpty()
+            ) {
+                binding.loginBtn.isEnabled = true
+                binding.loginBtn.alpha = 1f
+            } else {
+                binding.loginBtn.isEnabled = false
+                binding.loginBtn.alpha = 0.7f
+            }
+        }
 
     }
 

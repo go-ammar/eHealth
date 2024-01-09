@@ -12,11 +12,12 @@
         android:layout_height="match_parent"
         android:background="@color/bgColor"
         android:orientation="vertical"
-        android:padding="@dimen/margin_extra_large">
+>
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
+            android:padding="@dimen/margin_extra_large"
             android:layout_height="0dp"
             android:fillViewport="true"
             android:fitsSystemWindows="true"
@@ -117,6 +118,11 @@
 
         </ScrollView>
 
+        <include
+            layout="@layout/loading_view"
+            android:visibility="gone"
+            android:id="@+id/loader"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginBtn"
             style="@style/ButtonPrimaryText"
@@ -125,9 +131,11 @@
             android:layout_gravity="center"
             android:background="@drawable/rounded_button_primary"
             android:text="@string/login"
+            android:layout_margin="@dimen/margin_extra_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

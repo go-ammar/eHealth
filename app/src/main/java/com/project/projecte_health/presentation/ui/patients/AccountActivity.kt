@@ -6,6 +6,7 @@ import android.util.Log
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityAccountBinding
+import com.project.projecte_health.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +22,10 @@ class AccountActivity : BaseActivity() {
 
         setBottomNavigations()
 
+    }
+
+    override fun displayProgressBar(loading: Boolean) {
+        binding.loader.root.visibility = Utils.displayCustomLoaderView(this, loading)
     }
 
     override fun onPause() {

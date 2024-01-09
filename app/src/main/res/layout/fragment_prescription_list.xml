@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_large"
                 android:text="Past medications"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/upcomingRv" />
 
@@ -57,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_large"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/margin_medium"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/pastTv"

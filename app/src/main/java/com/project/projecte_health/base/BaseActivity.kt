@@ -25,4 +25,6 @@ abstract class BaseActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
     }
 
+    abstract fun displayProgressBar(loading: Boolean)
+
 }

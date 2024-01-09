@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityPrescriptionsBinding
+import com.project.projecte_health.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,11 @@ class PrescriptionsActivity : BaseActivity() {
         setContentView(binding.root)
 
         setBottomNavigations()
+    }
+
+    override fun displayProgressBar(loading: Boolean) {
+        binding.loader.root.visibility = Utils.displayCustomLoaderView(this, loading)
+
     }
 
     private fun setBottomNavigations() {

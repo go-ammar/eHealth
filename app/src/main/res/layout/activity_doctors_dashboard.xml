@@ -69,5 +69,10 @@
             app:navGraph="@navigation/doctors_main_nav_graph"
             tools:ignore="FragmentTagUsage" />
 
+        <include
+            layout="@layout/loading_view"
+            android:visibility="gone"
+            android:id="@+id/loader"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

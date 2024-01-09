@@ -15,5 +15,6 @@ data class UsersModel(
     val distance: Double? = 0.0,
     val latLng: LatLng,
     val rating : Double? = 0.0,
-    val imageUrl : String?= ""
+    val imageUrl : String?= "",
+    val bio : String ? = ""
 ) : Parcelable

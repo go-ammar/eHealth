@@ -43,7 +43,7 @@ class DoctorDetailsFragment : BaseFragment() {
         binding.doctorTypeTv.text = docInfo.speciality
         binding.addressTv.text = docInfo.address + "\n" + docInfo.postCode
 
-
+        binding.aboutDoc.text = docInfo.bio
 
         binding.showOnMapBtn.setOnClickListener {
             val action =

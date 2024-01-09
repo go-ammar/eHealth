@@ -1,12 +1,16 @@
 package com.project.projecte_health.utils
 
+import android.app.Activity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.project.projecte_health.R
 import com.project.projecte_health.data.local.bookings.Appointment
 import timber.log.Timber
 
@@ -51,33 +55,26 @@ object Utils {
         }
     }
 
-    fun isDoctorAvailable(database: FirebaseDatabase, doctorId: String, desiredTime: String, callback: (Boolean) -> Unit) {
-        // Query appointments for the specified doctor and time
-        val databaseReference  = database.reference.child("appointments")
-        val query = databaseReference.orderByChild("doctorId").equalTo(doctorId)
-
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var isAvailable = true
-
-                for (appointmentSnapshot in snapshot.children) {
-                    val appointment = appointmentSnapshot.getValue(Appointment::class.java)
-
-                    // Check if there is an appointment at the desired time
-                    if (appointment != null && appointment.startTime == desiredTime) {
-                        isAvailable = false
-                        break
-                    }
-                }
-
-                // Callback with the result
-                callback.invoke(isAvailable)
+    fun displayCustomLoaderView(activity: Activity?, loading: Boolean): Int {
+        var showLoader = 0
+        //loading true -> visible
+        when (loading) {
+            true -> {
+                val window = activity!!.window
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.statusBarColor = activity.resources.getColor(R.color.colorDim)
+                showLoader = View.VISIBLE
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Handle error
-                callback.invoke(false)
+            false -> {
+                val window = activity!!.window
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.statusBarColor = activity.resources.getColor(R.color.colorOnPrimary)
+                showLoader = View.GONE
             }
-        })
+        }
+        return showLoader
     }
+
 }

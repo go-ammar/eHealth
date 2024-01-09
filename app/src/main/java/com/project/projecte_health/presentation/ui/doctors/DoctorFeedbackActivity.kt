@@ -11,6 +11,7 @@ import com.project.projecte_health.presentation.ui.patients.AccountActivity
 import com.project.projecte_health.presentation.ui.patients.AppointmentsActivity
 import com.project.projecte_health.presentation.ui.patients.DashboardActivity
 import com.project.projecte_health.presentation.ui.patients.PrescriptionsActivity
+import com.project.projecte_health.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +23,10 @@ class DoctorFeedbackActivity : BaseActivity() {
         binding = ActivityDoctorFeedbackBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setBottomNavigations()
+    }
+
+    override fun displayProgressBar(loading: Boolean) {
+        binding.loader.root.visibility = Utils.displayCustomLoaderView(this, loading)
     }
 
     private fun setBottomNavigations() {

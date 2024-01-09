@@ -13,4 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+my_jks.jks
+private_key.pepk
 *.log

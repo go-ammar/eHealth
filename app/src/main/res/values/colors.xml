@@ -23,5 +23,6 @@
     <color name="redOnBlack">#79905E</color>
 
     <color name="bgCardColor">#D4C29D</color>
+    <color name="colorDim">#B3020202</color>
 
 </resources>

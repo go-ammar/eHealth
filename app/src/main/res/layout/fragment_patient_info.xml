@@ -89,6 +89,16 @@
                     android:visibility="gone"
                     app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
+                <EditText
+                    android:id="@+id/aboutYouEt"
+                    style="@style/EditTextMainBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:hint="About you"
+                    android:visibility="gone"
+                    android:padding="@dimen/margin_normal" />
+
                 <TextView
                     android:id="@+id/daysTv"
                     style="@style/TextViewMediumMainBody"
@@ -228,6 +238,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:enabled="false"
+                android:alpha="0.7"
                 android:layout_margin="@dimen/margin_large"
                 android:background="@drawable/rounded_button_primary"
                 android:text="@string/next"

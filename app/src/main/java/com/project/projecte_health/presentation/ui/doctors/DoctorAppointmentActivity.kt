@@ -9,6 +9,7 @@ import com.project.projecte_health.databinding.ActivityDoctorAppointmentBinding
 import com.project.projecte_health.databinding.ActivityDoctorsDashboardBinding
 import com.project.projecte_health.presentation.ui.patients.AccountActivity
 import com.project.projecte_health.presentation.ui.patients.AppointmentsActivity
+import com.project.projecte_health.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +22,10 @@ class DoctorAppointmentActivity : BaseActivity() {
         binding = ActivityDoctorAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setBottomNavigations()
+    }
+
+    override fun displayProgressBar(loading: Boolean) {
+        binding.loader.root.visibility = Utils.displayCustomLoaderView(this, loading)
     }
 
 
