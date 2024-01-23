@@ -17,13 +17,11 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setBottomNavigations()
     }
 
     override fun displayProgressBar(loading: Boolean) {
         binding.loader.root.visibility = Utils.displayCustomLoaderView(this, loading)
-
     }
 
     private fun setBottomNavigations() {

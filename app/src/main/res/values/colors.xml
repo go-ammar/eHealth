@@ -14,10 +14,8 @@
 
     <color name="transparent">#00000000</color>
 
-
     <color name="colorOnPrimary">#FFFFFF</color>
     <color name="colorButtonOutline">#DDDFE3</color>
-
 
     <color name="bgColor">#F3EFEF</color>
     <color name="redOnBlack">#79905E</color>

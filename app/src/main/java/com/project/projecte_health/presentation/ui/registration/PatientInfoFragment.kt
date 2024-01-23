@@ -139,14 +139,10 @@ class PatientInfoFragment : BaseFragment() {
                         // Registration success
                         Log.d("SignUpActivity", "createUserWithEmail:success")
                         val user = auth.currentUser
-
-
-
                         // Store additional details in Firebase Realtime Database
                         user?.let {
                             val userId = it.uid
                             val userReference = database.reference.child("users").child(userId)
-
                             // Customize the data structure based on your needs
                             val userData = HashMap<String, Any>()
                             userData["name"] = binding.nameEt.text.toString()
@@ -154,7 +150,6 @@ class PatientInfoFragment : BaseFragment() {
                             userData["address"] = binding.addressEt.text.toString()
                             userData["postCode"] = binding.postCodeEt.text.toString()
                             userData["userType"] = args.userType
-
                             if (args.userType == "Doctor") {
                                 userData["lat"] = latitude.toString()
                                 userData["lng"] = longitude.toString()
@@ -179,9 +174,7 @@ class PatientInfoFragment : BaseFragment() {
                                 userData["availability"] = availability
 
                             }
-
                             userReference.setValue(userData)
-
                             user.sendEmailVerification().addOnCompleteListener {
                                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                                 intent.putExtra("emailVerification", true)
@@ -189,14 +182,12 @@ class PatientInfoFragment : BaseFragment() {
                                 activity?.finish()
                             }
                         }
-
-
-
-                        // You can navigate to another activity or perform other actions here
-                    } else {
-                        // Registration failed
-                        Log.w("SignUpActivity", "createUserWithEmail:failure", task.exception)
-                        // Handle errors, display a message, etc.
+                    } else { // Registration failed
+                        Toast.makeText(
+                            requireContext(),
+                            task.exception?.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
@@ -315,7 +306,6 @@ class PatientInfoFragment : BaseFragment() {
                 binding.loginBtn.alpha = 0.7f
             }
         }
-
     }
 
     private fun getSelectedDays(daysCheckboxes: List<CheckBox>): List<String> {

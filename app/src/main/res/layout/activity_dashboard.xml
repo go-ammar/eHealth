@@ -63,6 +63,10 @@
             app:navGraph="@navigation/main_nav_graph"
             tools:ignore="FragmentTagUsage" />
 
+        <include
+            android:id="@+id/loader"
+            layout="@layout/loading_view"
+            android:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

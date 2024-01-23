@@ -173,10 +173,10 @@ class BookAppointmentFragment : BaseFragment() {
         val appointmentRef = database.getReference("appointments")
 
         val appointment = Appointment(
-            patientId = patientId,
-            patientName = userName,
             doctorId = doctorId,
             doctorName = args.docInfo.name,
+            patientId = patientId,
+            patientName = userName,
             date = date,
             startTime = startTime,
             endTime = endTime,

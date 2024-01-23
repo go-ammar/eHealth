@@ -15,7 +15,6 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var database: FirebaseDatabase
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

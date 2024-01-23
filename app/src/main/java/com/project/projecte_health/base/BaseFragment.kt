@@ -12,8 +12,6 @@ abstract class BaseFragment : Fragment() {
     lateinit var auth: FirebaseAuth
     lateinit var database: FirebaseDatabase
 
-//    @Inject
-//    lateinit var prefsManager: PrefsManager
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -21,7 +19,6 @@ abstract class BaseFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         // Initialize Firebase Realtime Database
         database = FirebaseDatabase.getInstance()
-
     }
 
 }

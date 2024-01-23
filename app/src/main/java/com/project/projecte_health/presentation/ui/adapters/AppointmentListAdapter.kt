@@ -24,7 +24,6 @@ class AppointmentListAdapter(
             return oldItem == newItem
         }
 
-        @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: Appointment, newItem: Appointment): Boolean {
             return oldItem == newItem
         }
@@ -53,7 +52,7 @@ class AppointmentListAdapter(
                             }
                         }
                         appointmentTime.text =
-                            item.date?.toLong()?.let { formatTimestamp(it) } + " " + item.startTime
+                            item.date?.let { formatTimestamp(it) } + " " + item.startTime
                         cardView.setOnClickListener {
                             onClickListener.invoke(item)
                         }

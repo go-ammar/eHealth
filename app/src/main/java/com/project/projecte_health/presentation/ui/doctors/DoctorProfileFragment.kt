@@ -133,7 +133,6 @@ class DoctorProfileFragment : BaseFragment() {
     }
 
     private fun checkPermission() {
-
         if (Build.VERSION.SDK_INT > 32) {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),

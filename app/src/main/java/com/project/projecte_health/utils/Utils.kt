@@ -22,6 +22,8 @@ object Utils {
         endLat: Double,
         endLng: Double
     ): Double {
+        // Haversine formula  to calculate the distance between two geographic coordinates
+        // (latitude and longitude) on the Earth's surface.
         val radiusOfEarth = 6371 // Earth's radius in kilometers
 
         val latDistance = Math.toRadians(endLat - startLat)

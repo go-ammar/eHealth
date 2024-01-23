@@ -38,7 +38,7 @@ class DoctorFeedbackActivity : BaseActivity() {
 
             when (it.itemId) {
                 R.id.home_button -> {
-                    val intent = Intent(this, DashboardActivity::class.java)
+                    val intent = Intent(this, DoctorsDashboardActivity::class.java)
                     startActivity(intent)
                     true
                 }

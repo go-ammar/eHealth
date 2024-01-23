@@ -1,7 +1,6 @@
 package com.project.projecte_health.di
 
 import com.google.gson.GsonBuilder
-import com.project.projecte_health.network.services.ApiNetworkService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,10 +40,10 @@ object NetworkModule {
         .client(okHttpClient)
         .build()
 
-    @Provides
-    @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiNetworkService =
-        retrofit.create(ApiNetworkService::class.java)
+//    @Provides
+//    @Singleton
+//    fun provideApiService(retrofit: Retrofit): ApiNetworkService =
+//        retrofit.create(ApiNetworkService::class.java)
 
 //    @Provides
 //    @Singleton
