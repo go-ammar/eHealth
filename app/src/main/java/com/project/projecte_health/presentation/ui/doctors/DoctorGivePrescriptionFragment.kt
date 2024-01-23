@@ -1,5 +1,6 @@
 package com.project.projecte_health.presentation.ui.doctors
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.data.local.medicines.PrescriptionModel
 import com.project.projecte_health.databinding.FragmentDoctorGivePrescriptionBinding
 import com.project.projecte_health.databinding.FragmentDoctorsHomeBinding
+import com.project.projecte_health.presentation.ui.patients.DashboardActivity
 import com.project.projecte_health.presentation.ui.patients.PrescriptionsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -63,7 +65,15 @@ class DoctorGivePrescriptionFragment : BaseFragment() {
             (activity as PrescriptionsActivity).database.reference.child(patientId)
                 .child("prescriptions")
         val prescriptionKey = prescriptionsRef.push().key
-        prescriptionsRef.child(prescriptionKey!!).setValue(prescription)
+        prescriptionsRef.child(prescriptionKey!!).setValue(prescription).addOnCompleteListener {
+            if (it.isSuccessful) {
+                val intent = Intent(requireContext(), DoctorsDashboardActivity::class.java)
+                (activity as PrescriptionsActivity).startActivity(intent)
+                (activity as PrescriptionsActivity).finish()
+            }
+        }
+
+
     }
 
 }

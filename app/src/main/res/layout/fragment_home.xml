@@ -27,7 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Welcome To HealthConnect, Ammar"
+                android:text="Welcome To DocToGo, Ammar"
                 android:textColor="@color/textColor"
                 app:layout_constraintEnd_toStartOf="@id/logoutBtn"
                 app:layout_constraintStart_toStartOf="parent"

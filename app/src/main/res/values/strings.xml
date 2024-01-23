@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project E-Health</string>
+    <string name="app_name">Doc To Go</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -55,4 +55,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="home">Home</string>
+    <string name="prescriptions">Prescriptions</string>
+    <string name="appointments">Appointments</string>
+    <string name="profile">Profile</string>
 </resources>

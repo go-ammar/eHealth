@@ -48,7 +48,7 @@
                     style="@style/EditTextMainBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password" />
+                    android:hint="Dosage" />
 
 
                 <EditText
@@ -57,7 +57,7 @@
                     style="@style/EditTextMainBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/confirm_password"/>
+                    android:hint="Details"/>
 
 
             </LinearLayout>

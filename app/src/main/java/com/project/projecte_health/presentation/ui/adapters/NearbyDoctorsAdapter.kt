@@ -47,7 +47,7 @@ class NearbyDoctorsAdapter(
                     binding.doctorName.text = item.name.replaceFirstChar {
                         it.uppercaseChar()
                     }
-                    binding.doctorDistance.text = item.distance.toString().substringBefore(".") + " meters away"
+                    binding.doctorDistance.text = item.distance.toString().substringBefore(".") + " KM away"
 
                     if (item.imageUrl != "") {
                         Glide.with(context)

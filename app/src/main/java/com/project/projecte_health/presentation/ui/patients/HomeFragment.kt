@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.RemoteMessage
+import com.project.projecte_health.R
 import com.project.projecte_health.data.local.dashboard.model.CategoryModel
 import com.project.projecte_health.data.local.users.model.UsersModel
 import com.project.projecte_health.databinding.FragmentHomeBinding
@@ -57,7 +58,7 @@ class HomeFragment : Fragment() {
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
             checkLocationPermission()
             binding.heading.text =
-                "Welcome To HealthConnect,\n" + (activity as DashboardActivity).prefsManager.getUserName()
+                "Welcome To DocToGo,\n" + (activity as DashboardActivity).prefsManager.getUserName()
                     .toString()
 
         }
@@ -234,10 +235,10 @@ class HomeFragment : Fragment() {
         val userList: ArrayList<CategoryModel> = ArrayList()
 
         // Adding some user data to the list
-        userList.add(CategoryModel(1, "General", 0))
-        userList.add(CategoryModel(2, "Dentist", 0))
-        userList.add(CategoryModel(3, "Pediatrician", 0))
-        userList.add(CategoryModel(4, "Orthodontist", 0))
+        userList.add(CategoryModel(1, "General", R.drawable.general))
+        userList.add(CategoryModel(2, "Dentist", R.drawable.dentist))
+        userList.add(CategoryModel(3, "Pediatrician", R.drawable.pediatrician))
+        userList.add(CategoryModel(4, "Orthodontist", R.drawable.orthopedic))
 
         categoriesAdapter = CategoryAdapter {
             val action =
@@ -264,9 +265,12 @@ class HomeFragment : Fragment() {
             }
 
             logoutBtn.setOnClickListener {
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                startActivity(intent)
-                activity?.finish()
+                lifecycleScope.launch {
+                    (activity as DashboardActivity).prefsManager.clearData()
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                }
             }
 
         }

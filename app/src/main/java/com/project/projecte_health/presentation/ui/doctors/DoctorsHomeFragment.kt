@@ -11,6 +11,7 @@ import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.databinding.FragmentDoctorAppointmentDetailBinding
 import com.project.projecte_health.databinding.FragmentDoctorsHomeBinding
+import com.project.projecte_health.presentation.ui.patients.DashboardActivity
 import com.project.projecte_health.presentation.ui.registration.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -30,7 +31,7 @@ class DoctorsHomeFragment : BaseFragment() {
 
         lifecycleScope.launch {
             binding.heading.text =
-                "Welcome To HealthConnect, " + (activity as DoctorsDashboardActivity).prefsManager.getUserName()
+                "Welcome To DocToGo, " + (activity as DoctorsDashboardActivity).prefsManager.getUserName()
                     .toString()
         }
         return binding.root
@@ -42,9 +43,12 @@ class DoctorsHomeFragment : BaseFragment() {
 
         binding.apply {
             logoutBtn.setOnClickListener {
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                startActivity(intent)
-                activity?.finish()
+                lifecycleScope.launch {
+                    (activity as DoctorsDashboardActivity).prefsManager.clearData()
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                }
             }
         }
     }

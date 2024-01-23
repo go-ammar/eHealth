@@ -5,7 +5,7 @@
             #202020
         </item>
         <item name="windowSplashScreenAnimatedIcon">
-            @drawable/baseline_baby_changing_station_24
+            @drawable/ic_launcher
         </item>
         <item name="postSplashScreenTheme">@style/Base.Theme.ProjectEHealth</item>
     </style>

@@ -64,6 +64,11 @@ class ProfileFragment : BaseFragment() {
 
                             binding.tvProfileName.text = profileData.name
 
+                            binding.heightTv.text = "Height: "+profileData.height.toString()
+                            binding.bloodTypeTv.text = "Bloody Type: "+profileData.bloodType.toString()
+                            binding.weightTv.text = "Weight: "+profileData.weight.toString()
+                            binding.tvAllergies.text = profileData.allergies.toString()
+
                             requireActivity().runOnUiThread {
                                 // Your UI update code here
                                 if (profileData.imageUrl?.isNotEmpty() == true)

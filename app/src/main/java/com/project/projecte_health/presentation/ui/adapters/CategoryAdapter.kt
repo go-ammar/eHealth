@@ -45,6 +45,7 @@ class CategoryAdapter @Inject constructor(
             is ItemDoctorCategoryBinding ->
                 binding.apply {
                     doctorName.text = item.category
+                    doctorIv.setImageResource(item.icon)
                     cardView.setOnClickListener { onClickListener.invoke(item) }
 
                 }

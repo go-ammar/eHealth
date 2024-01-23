@@ -25,6 +25,10 @@
         <action
             android:id="@+id/action_doctorAppointmentDetailFragment_to_doctorGivePrescriptionFragment"
             app:destination="@id/doctorGivePrescriptionFragment" />
+        <argument
+            android:name="isInPast"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
     <fragment
         android:id="@+id/doctorGivePrescriptionFragment"

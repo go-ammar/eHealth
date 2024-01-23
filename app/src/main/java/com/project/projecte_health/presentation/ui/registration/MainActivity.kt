@@ -8,10 +8,14 @@ import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.project.projecte_health.base.BaseActivity
 import com.project.projecte_health.databinding.ActivityMainBinding
+import com.project.projecte_health.presentation.ui.doctors.DoctorsDashboardActivity
+import com.project.projecte_health.presentation.ui.patients.DashboardActivity
 import com.project.projecte_health.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -27,10 +31,11 @@ class MainActivity : BaseActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             keepSplashOnScreen = false
             checkLocationPermission()
+            actionViews()
         }, delay)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        actionViews()
+//        actionViews()
     }
 
     override fun displayProgressBar(loading: Boolean) {
@@ -39,6 +44,27 @@ class MainActivity : BaseActivity() {
     }
 
     private fun actionViews() {
+
+
+        lifecycleScope.launch {
+            val userType = prefsManager.getUserType().toString()
+
+            if (userType == "Doctor"){
+                val intent = Intent(
+                    this@MainActivity,
+                    DoctorsDashboardActivity::class.java
+                )
+                startActivity(intent)
+                finish()
+            } else if (userType == "Patient"){
+                val intent = Intent(
+                    this@MainActivity,
+                    DashboardActivity::class.java
+                )
+                startActivity(intent)
+                finish()
+            }
+        }
 
         binding.loginBtn.setOnClickListener {
             val intent = Intent(applicationContext, LoginActivity::class.java)
@@ -51,7 +77,6 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
             finish()
         }
-
 
     }
 

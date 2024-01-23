@@ -30,7 +30,7 @@
                 android:id="@+id/doctorIv"
                 android:layout_width="@dimen/_76sdp"
                 android:layout_height="@dimen/_64sdp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/baseline_person_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"

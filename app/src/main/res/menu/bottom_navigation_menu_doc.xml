@@ -9,14 +9,14 @@
 
     <item
         android:id="@+id/feedback_button"
-        android:icon="@drawable/home_icon_selector"
+        android:icon="@drawable/feedback_icon_selector"
         android:iconTint="#A5AAB6"
         android:visible="true"
         android:title="Feedback" />
 
     <item
         android:id="@+id/appointments_button"
-        android:icon="@drawable/home_icon_selector"
+        android:icon="@drawable/appointment_icon_selector"
         android:iconTint="#A5AAB6"
         android:visible="true"
         android:title="Appointments" />
@@ -24,7 +24,7 @@
 
     <item
         android:id="@+id/account_button"
-        android:icon="@drawable/home_icon_selector"
+        android:icon="@drawable/account_icon_selector"
         android:iconTint="#A5AAB6"
         android:visible="true"
         android:title="Profile" />

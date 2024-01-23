@@ -4,29 +4,25 @@
     <item
         android:id="@+id/home_button"
         android:icon="@drawable/home_icon_selector"
-        android:title="Home"
-        android:visible="true"/>
-
+        android:title="@string/home"
+        android:visible="true" />
     <item
         android:id="@+id/prescriptions_button"
-        android:icon="@drawable/home_icon_selector"
+        android:icon="@drawable/prescription_icon_selector"
         android:iconTint="#A5AAB6"
-        android:visible="true"
-        android:title="Prescriptions" />
-
+        android:title="@string/prescriptions"
+        android:visible="true" />
     <item
         android:id="@+id/appointments_button"
-        android:icon="@drawable/home_icon_selector"
+        android:icon="@drawable/appointment_icon_selector"
         android:iconTint="#A5AAB6"
-        android:visible="true"
-        android:title="Appointments" />
-
-
+        android:title="@string/appointments"
+        android:visible="true" />
     <item
         android:id="@+id/account_button"
-        android:icon="@drawable/home_icon_selector"
+        android:icon="@drawable/account_icon_selector"
         android:iconTint="#A5AAB6"
-        android:visible="true"
-        android:title="Profile" />
+        android:title="@string/profile"
+        android:visible="true" />
 
 </menu>

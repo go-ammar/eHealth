@@ -79,12 +79,13 @@ class DoctorAppointmentListFragment : BaseFragment() {
 
                 adapterPast = AppointmentListAdapter(true) {
 
-//                    val action =
-//                        DoctorAppointmentListFragmentDirections.actionDoctorAppointmentListFragmentToDoctorAppointmentDetailFragment(
-//                            it
-//                        )
-//
-//                    findNavController().safeNavigate(action)
+                    val action =
+                        DoctorAppointmentListFragmentDirections.actionDoctorAppointmentListFragmentToDoctorAppointmentDetailFragment(
+                            it,
+                            false
+                        )
+
+                    findNavController().safeNavigate(action)
 
                 }
 
@@ -188,6 +189,7 @@ class DoctorAppointmentListFragment : BaseFragment() {
                     }
 
                     callback(appointments)
+                    callbackPast(appointmentsPast)
                 }
             }
 

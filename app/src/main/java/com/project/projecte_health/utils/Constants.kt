@@ -7,5 +7,6 @@ object Constants {
 
     const val USER_ID_PREF = "USER_ID"
     const val USER_NAME_PREF = "USER_NAME"
+    const val USER_TYPE_PREF = "USER_TYPE"
 
 }

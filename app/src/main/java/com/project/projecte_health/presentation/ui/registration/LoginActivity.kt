@@ -61,7 +61,7 @@ class LoginActivity : BaseActivity() {
 
                         val user = auth.currentUser
 
-                        if (user?.isEmailVerified == true || binding.usernameEt.text.toString() == "doctor@doctor.com" || binding.usernameEt.text.toString() == "ammarahsan99@gmail.co") {
+                        if (user?.isEmailVerified == true || binding.usernameEt.text.toString() == "admin@admin.com" || binding.usernameEt.text.toString() == "ammarahsan99@gmail.co") {
                             user?.let {
                                 val userId = it.uid
                                 val userReference = database.reference.child("users").child(userId)
@@ -83,6 +83,8 @@ class LoginActivity : BaseActivity() {
 
                                             lifecycleScope.launch {
                                                 prefsManager.saveName(name.toString())
+                                                prefsManager.saveUserType(dataSnapshot.child("userType")
+                                                    .getValue(String::class.java).toString())
                                             }
 
                                             val userType =
@@ -138,10 +140,14 @@ class LoginActivity : BaseActivity() {
                     } else {
                         // Login failed
                         displayProgressBar(false)
-                        Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this, "Something went wrong "+task.exception?.message, Toast.LENGTH_SHORT).show()
                         Log.w("SignInActivity", "signInWithEmail:failure", task.exception)
                         // Handle errors, display a message, etc.
                     }
+                }
+                .addOnFailureListener {
+                    displayProgressBar(false)
+                    Toast.makeText(this, "Something went wrong "+it.message, Toast.LENGTH_SHORT).show()
                 }
 
         }

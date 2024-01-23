@@ -13,5 +13,6 @@ class Appointment(
     val startTime: String? = "",
     val endTime: String? = "",
     val details: String? = "",
-    val feedbackGiven : Boolean ? = false
+    val feedbackGiven : Boolean ? = false,
+    val isValid : Boolean? = true
 ) : Parcelable
