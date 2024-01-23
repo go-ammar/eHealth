@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseAdapter
 import com.project.projecte_health.data.local.medicines.PrescriptionModel
-import com.project.projecte_health.data.local.users.model.UsersModel
-import com.project.projecte_health.databinding.ItemDoctorListBinding
 import com.project.projecte_health.databinding.ItemPrescriptionBinding
 
 class PrescriptionListAdapter (

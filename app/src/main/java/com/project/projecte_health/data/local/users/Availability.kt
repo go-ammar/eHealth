@@ -1,4 +1,4 @@
-package com.project.projecte_health.data.local.users.model
+package com.project.projecte_health.data.local.users
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

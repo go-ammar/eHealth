@@ -1,4 +1,4 @@
-package com.project.projecte_health.data.local.dashboard.model
+package com.project.projecte_health.data.local.dashboard
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

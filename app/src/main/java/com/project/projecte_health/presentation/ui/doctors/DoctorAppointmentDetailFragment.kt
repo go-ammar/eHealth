@@ -14,7 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.base.BaseFragment
 import com.project.projecte_health.data.local.bookings.Appointment
 import com.project.projecte_health.data.local.medicines.PrescriptionModel
-import com.project.projecte_health.data.local.users.model.ProfileModel
+import com.project.projecte_health.data.local.users.ProfileModel
 import com.project.projecte_health.databinding.FragmentDoctorAppointmentDetailBinding
 import com.project.projecte_health.presentation.ui.adapters.PrescriptionListAdapter
 import com.project.projecte_health.presentation.ui.patients.PrescriptionsActivity

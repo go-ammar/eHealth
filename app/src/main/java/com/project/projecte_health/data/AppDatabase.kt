@@ -4,15 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.project.projecte_health.data.local.dashboard.dao.DashboardDao
-import com.project.projecte_health.data.local.dashboard.model.DashboardModel
-import com.project.projecte_health.data.local.users.dao.UsersDao
-import com.project.projecte_health.data.local.users.model.UsersModel
+import com.project.projecte_health.data.local.dashboard.DashboardModel
 import com.project.projecte_health.utils.Constants
-import com.project.projecte_health.utils.JsonConverter
 import timber.log.Timber
 
 @Database(

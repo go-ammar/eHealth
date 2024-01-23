@@ -7,10 +7,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseAdapter
-import com.project.projecte_health.data.local.users.model.DoctorDetailModel
-import com.project.projecte_health.data.local.users.model.UsersModel
+import com.project.projecte_health.data.local.users.UsersModel
 import com.project.projecte_health.databinding.ItemDoctorListBinding
-import com.project.projecte_health.databinding.ItemNearbyDoctorsBinding
 
 class DoctorListAdapter(
     private val onClickListener: (model: UsersModel) -> Unit

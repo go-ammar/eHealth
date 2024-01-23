@@ -11,7 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.base.BaseFragment
-import com.project.projecte_health.data.local.users.model.UsersModel
+import com.project.projecte_health.data.local.users.UsersModel
 import com.project.projecte_health.databinding.FragmentDoctorListingBinding
 import com.project.projecte_health.presentation.ui.adapters.DoctorListAdapter
 import com.project.projecte_health.utils.Utils.safeNavigate

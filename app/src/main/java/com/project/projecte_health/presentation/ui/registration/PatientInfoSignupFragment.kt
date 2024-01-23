@@ -60,6 +60,7 @@ class PatientInfoSignupFragment : Fragment() {
             binding.passwordEt.text.toString()
                 .isNotEmpty() && binding.confirmPasswordEt.text.toString().isNotEmpty()
             && binding.emailEt.text.toString().isNotEmpty()
+            && binding.passwordEt.text.toString().length > 5
         ) {
             binding.nextBtn.isEnabled = true
             binding.nextBtn.alpha = 1f

@@ -1,4 +1,4 @@
-package com.project.projecte_health.data.local.dashboard.model
+package com.project.projecte_health.data.local.dashboard
 
 data class CategoryModel(
     val id : Int,

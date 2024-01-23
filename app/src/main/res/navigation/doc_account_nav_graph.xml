@@ -22,6 +22,6 @@
         >
         <argument
             android:name="docDetails"
-            app:argType="com.project.projecte_health.data.local.users.model.ProfileModel" />
+            app:argType="com.project.projecte_health.data.local.users.ProfileModel" />
     </fragment>
 </navigation>

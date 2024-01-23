@@ -6,12 +6,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.projecte_health.R
 import com.project.projecte_health.base.BaseAdapter
-import com.project.projecte_health.data.local.users.model.UsersModel
-import com.project.projecte_health.databinding.ItemDoctorCategoryBinding
+import com.project.projecte_health.data.local.users.UsersModel
 import com.project.projecte_health.databinding.ItemNearbyDoctorsBinding
 
 class NearbyDoctorsAdapter(

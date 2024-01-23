@@ -26,9 +26,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.project.projecte_health.base.BaseFragment
-import com.project.projecte_health.data.local.users.model.ProfileModel
+import com.project.projecte_health.data.local.users.ProfileModel
 import com.project.projecte_health.databinding.FragmentDoctorProfileBinding
-import com.project.projecte_health.presentation.ui.bottomsheets.BottomSheetSpeciality
 import com.project.projecte_health.utils.Utils.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

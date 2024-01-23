@@ -28,7 +28,7 @@
             app:destination="@id/doctorsMapsFragment" />
         <argument
             android:name="docInfo"
-            app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
+            app:argType="com.project.projecte_health.data.local.users.UsersModel" />
         <action
             android:id="@+id/action_doctorDetailsFragment_to_bookAppointmentFragment"
             app:destination="@id/bookAppointmentFragment" />
@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_doctors_maps">
         <argument
             android:name="docInfo"
-            app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
+            app:argType="com.project.projecte_health.data.local.users.UsersModel" />
     </fragment>
     <fragment
         android:id="@+id/doctorListingFragment"
@@ -62,7 +62,7 @@
         tools:layout="@layout/fragment_appointments_listing">
         <argument
             android:name="docInfo"
-            app:argType="com.project.projecte_health.data.local.users.model.UsersModel" />
+            app:argType="com.project.projecte_health.data.local.users.UsersModel" />
     </fragment>
 
 </navigation>

@@ -9,12 +9,8 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.project.projecte_health.base.BaseFragment
-import com.project.projecte_health.data.local.users.model.Availability
-import com.project.projecte_health.data.local.users.model.ProfileModel
+import com.project.projecte_health.data.local.users.Availability
 import com.project.projecte_health.databinding.FragmentDoctorEditProfileBinding
 import com.project.projecte_health.presentation.ui.bottomsheets.BottomSheetSpeciality
 import dagger.hilt.android.AndroidEntryPoint

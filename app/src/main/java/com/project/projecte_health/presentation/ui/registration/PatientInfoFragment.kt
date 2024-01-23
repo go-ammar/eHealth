@@ -18,7 +18,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.project.projecte_health.base.BaseFragment
-import com.project.projecte_health.data.local.users.model.Availability
+import com.project.projecte_health.data.local.users.Availability
 import com.project.projecte_health.databinding.FragmentPatientInfoBinding
 import com.project.projecte_health.presentation.ui.bottomsheets.BottomSheetSpeciality
 import java.util.ArrayList

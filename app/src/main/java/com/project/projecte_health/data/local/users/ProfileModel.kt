@@ -1,7 +1,6 @@
-package com.project.projecte_health.data.local.users.model
+package com.project.projecte_health.data.local.users
 
 import android.os.Parcelable
-import com.project.projecte_health.data.local.bookings.Appointment
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

@@ -1,4 +1,4 @@
-package com.project.projecte_health.data.local.users.model
+package com.project.projecte_health.data.local.users
 
 import android.media.Rating
 import android.os.Parcelable
