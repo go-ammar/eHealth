@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.project.projecte_health.R
@@ -42,6 +43,17 @@ class DoctorGivePrescriptionFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.headingTitle.text = "Prescribe Medicine"
+
+        binding.medicineEt.addTextChangedListener {
+            enableBtn()
+        }
+        binding.detailsEt.addTextChangedListener {
+            enableBtn()
+        }
+        binding.dosageEt.addTextChangedListener {
+            enableBtn()
+        }
 
         binding.nextBtn.setOnClickListener {
 
@@ -59,17 +71,31 @@ class DoctorGivePrescriptionFragment : BaseFragment() {
         }
     }
 
+    private fun enableBtn() {
+
+        if (binding.detailsEt.text.toString().isNotEmpty()
+            && binding.dosageEt.text.toString().isNotEmpty()
+            && binding.medicineEt.text.toString().isNotEmpty()){
+            binding.nextBtn.isEnabled = true
+            binding.nextBtn.alpha = 1f
+        } else {
+            binding.nextBtn.isEnabled = false
+            binding.nextBtn.alpha = 0.4f
+        }
+
+    }
+
     private fun savePrescription(patientId: String, prescription: PrescriptionModel) {
 
         val prescriptionsRef =
-            (activity as PrescriptionsActivity).database.reference.child(patientId)
-                .child("prescriptions")
+            (activity as DoctorAppointmentActivity).database.reference
+                .child("prescriptions").child(patientId)
         val prescriptionKey = prescriptionsRef.push().key
         prescriptionsRef.child(prescriptionKey!!).setValue(prescription).addOnCompleteListener {
             if (it.isSuccessful) {
                 val intent = Intent(requireContext(), DoctorsDashboardActivity::class.java)
-                (activity as PrescriptionsActivity).startActivity(intent)
-                (activity as PrescriptionsActivity).finish()
+                (activity as DoctorAppointmentActivity).startActivity(intent)
+                (activity as DoctorAppointmentActivity).finish()
             }
         }
 

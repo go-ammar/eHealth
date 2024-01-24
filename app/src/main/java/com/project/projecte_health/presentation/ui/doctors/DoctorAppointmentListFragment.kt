@@ -50,12 +50,15 @@ class DoctorAppointmentListFragment : BaseFragment() {
 
                 adapter = AppointmentListAdapter(true) {
 
+
                     val action =
                         DoctorAppointmentListFragmentDirections.actionDoctorAppointmentListFragmentToDoctorAppointmentDetailFragment(
-                            it
+                            it,
+                            false
                         )
 
                     findNavController().safeNavigate(action)
+
 
                 }
 
@@ -81,8 +84,7 @@ class DoctorAppointmentListFragment : BaseFragment() {
 
                     val action =
                         DoctorAppointmentListFragmentDirections.actionDoctorAppointmentListFragmentToDoctorAppointmentDetailFragment(
-                            it,
-                            false
+                            it
                         )
 
                     findNavController().safeNavigate(action)

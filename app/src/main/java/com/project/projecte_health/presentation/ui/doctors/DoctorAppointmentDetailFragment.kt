@@ -134,8 +134,9 @@ class DoctorAppointmentDetailFragment : BaseFragment() {
 
     private fun getPrescriptions() {
         val prescriptionsRef =
-            (activity as PrescriptionsActivity).database.reference.child(args.appointmentdetail.patientId.toString())
-                .child("prescriptions")
+            (activity as DoctorAppointmentActivity).database.reference.child("prescriptions")
+                .child(args.appointmentdetail.patientId.toString())
+
 
         prescriptionsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -177,3 +178,8 @@ class DoctorAppointmentDetailFragment : BaseFragment() {
         return dateFormat.format(date)
     }
 }
+
+data class PM (
+    val key: String?="",
+    val pres: PrescriptionModel?=null
+)

@@ -116,7 +116,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Monday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <!-- Tuesday -->
@@ -128,7 +128,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Tuesday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <!-- Wednesday -->
@@ -140,7 +140,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Wednesday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <!-- Thursday -->
@@ -152,7 +152,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Thursday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <!-- Friday -->
@@ -164,7 +164,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Friday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <!-- Saturday -->
@@ -176,7 +176,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Saturday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <!-- Sunday -->
@@ -188,7 +188,7 @@
                     android:drawableStart="@drawable/checkbox_selector"
                     android:drawablePadding="@dimen/margin_small"
                     android:text="Sunday"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textColor"
                     android:visibility="gone" />
 
                 <TextView
